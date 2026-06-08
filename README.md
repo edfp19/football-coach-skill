@@ -1,14 +1,16 @@
 # Footballer Nutrition Coach
 
-A Codex skill for soccer nutrition and training-load-aware planning.
+A Codex skill for evaluating a footballer's current training routine, then adapting the plan around football load, gym work, recovery, and optional nutrition.
 
-It is built for amateur, recreational, semi-pro, and professional footballers. The default use case is simple: give Codex your weight, height, training context, fatigue, minutes, budget, and food preferences, then have it adapt nutrition advice around the football you are actually doing.
+It is built for amateur, recreational, semi-pro, and professional footballers. The default use case is simple: give Codex your current football routine, gym routine, body data, fatigue, minutes, and what feels off. It evaluates what you are already doing, keeps what works, changes what does not, and only brings nutrition in when it supports the routine.
 
 No pretending everyone has a private chef. No supplement gospel. No crash dieting. No rehab cosplay.
 
 ## What It Does
 
-- Builds diet guidance for soccer players using metric units.
+- Evaluates the player's current football, gym, conditioning, and nutrition routine.
+- Says what to keep, what to change, what to remove, and what to monitor.
+- Adds nutrition support when it matters, using metric units.
 - Adapts to 11-a-side and 8-a-side football.
 - Accounts for club training, gym work, match minutes, skipped sessions, and season phase.
 - Supports pre-season, in-season, off-season, and deload contexts.
@@ -23,14 +25,13 @@ No pretending everyone has a private chef. No supplement gospel. No crash dietin
 
 The skill can help with:
 
-- Diet guidance
-- Weekly meal structure
-- Match-day nutrition
-- Grocery or budget planning
+- Routine evaluation
 - Training adaptation
 - Recovery and injury-risk checks
+- Optional diet guidance
+- Optional match-day nutrition
 
-Training guidance is optional. The main focus is nutrition for football performance.
+The main focus is routine evaluation. Nutrition is support, not the point of the intake.
 
 ## What It Refuses To Do
 
@@ -48,7 +49,11 @@ If something sounds medical, recurring, severe, or risky, the skill should tell 
 
 ## User Data
 
-The skill expects Codex to keep a `USER_DATA.md` file in the current workspace.
+The skill expects Codex to keep a `USER_DATA.md` file in a workspace folder named:
+
+```text
+footballer-coach/
+```
 
 That file tracks:
 
@@ -75,7 +80,7 @@ The point is not to make the user write an essay. Weekly updates should stay sho
 
 ## Memory
 
-The skill also expects a `MEMORY.md` file in the current workspace.
+The skill also expects a `MEMORY.md` file in the same workspace folder.
 
 It keeps two things separate:
 
@@ -96,17 +101,30 @@ assets/intake-form.html
 
 It is a self-contained static HTML form. No server needed.
 
+On first use, the skill should create:
+
+```text
+footballer-coach/
+  intake-form.html
+  USER_DATA.md
+  MEMORY.md
+```
+
+The user should open `footballer-coach/intake-form.html`, not dig through the skill install directory.
+
 Tabs:
 
 - Profile
-- Weekly Update
-- Training
-- Nutrition/Budget
+- Current Routine
+- Weekly Load
+- Optional Nutrition
 - Output Focus
 
-The form exports Markdown that can be pasted into `USER_DATA.md` or given to Codex.
+The Initial State tab accepts current football routines, gym routines, conditioning, diet snapshots, pasted docs, Markdown, coach notes, and the player's own read of the problem. The form exports Markdown that can be pasted into `footballer-coach/USER_DATA.md` or given to Codex.
 
 The skill should offer this form by default when `USER_DATA.md` is missing or when the user asks for a routine, weekly, diet, or training update. Chat intake is still allowed, but it should be the fallback, not the first move.
+
+If an embedded browser blocks clipboard or download actions, use the `Select Markdown` button and copy the selected text manually.
 
 ## References
 
