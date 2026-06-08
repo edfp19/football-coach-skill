@@ -3,7 +3,7 @@
 Keep research memory and user-specific coaching memory separate.
 
 ```markdown
-# Footballer Nutrition Memory
+# Footballer Routine Memory
 
 ## Evidence Memory
 ### Source Title
