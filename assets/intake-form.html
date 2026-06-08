@@ -29,17 +29,9 @@
       margin: 0 auto;
       padding: 24px;
     }
-    header {
-      margin-bottom: 18px;
-    }
-    h1 {
-      margin: 0 0 6px;
-      font-size: 28px;
-    }
-    p {
-      margin: 0 0 12px;
-      color: var(--muted);
-    }
+    header { margin-bottom: 18px; }
+    h1 { margin: 0 0 6px; font-size: 28px; }
+    p { margin: 0 0 12px; color: var(--muted); }
     .tabs {
       display: flex;
       gap: 8px;
@@ -69,10 +61,7 @@
       margin-bottom: 16px;
     }
     section.active { display: block; }
-    h2 {
-      margin: 0 0 14px;
-      font-size: 20px;
-    }
+    h2 { margin: 0 0 14px; font-size: 20px; }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -84,6 +73,7 @@
       font-weight: 700;
       color: var(--ink);
       font-size: 14px;
+      margin-bottom: 12px;
     }
     input, select, textarea {
       width: 100%;
@@ -94,15 +84,8 @@
       color: var(--ink);
       background: #fff;
     }
-    textarea {
-      min-height: 86px;
-      resize: vertical;
-    }
-    .hint {
-      font-size: 12px;
-      color: var(--muted);
-      font-weight: 400;
-    }
+    textarea { min-height: 86px; resize: vertical; }
+    .hint { font-size: 12px; color: var(--muted); font-weight: 400; }
     .actions {
       display: flex;
       gap: 10px;
@@ -118,14 +101,9 @@
       font-weight: 700;
       cursor: pointer;
     }
-    button.secondary {
-      background: var(--accent-2);
-    }
-    button.ghost {
-      background: #e7ece4;
-      color: var(--ink);
-    }
-    pre {
+    button.secondary { background: var(--accent-2); }
+    button.ghost { background: #e7ece4; color: var(--ink); }
+    textarea.output {
       white-space: pre-wrap;
       word-break: break-word;
       background: #101510;
@@ -134,25 +112,31 @@
       border-radius: 8px;
       min-height: 220px;
       overflow: auto;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 13px;
+      line-height: 1.45;
     }
-    .note {
-      color: var(--warn);
+    .note { color: var(--warn); font-weight: 700; }
+    .status {
+      min-height: 20px;
+      color: var(--muted);
       font-weight: 700;
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
   <main>
     <header>
-      <h1>Footballer Nutrition Intake</h1>
-      <p>Fill what matters. Leave anything blank if you do not know it or do not want to share it. Units are metric.</p>
+      <h1>Footballer Routine Intake</h1>
+      <p>Training first. Fill what matters. Leave anything blank if you do not know it or do not want to share it. Units are metric.</p>
     </header>
 
     <nav class="tabs" aria-label="Form sections">
       <button class="tab" type="button" aria-selected="true" data-tab="profile">Profile</button>
-      <button class="tab" type="button" aria-selected="false" data-tab="weekly">Weekly Update</button>
-      <button class="tab" type="button" aria-selected="false" data-tab="training">Training</button>
-      <button class="tab" type="button" aria-selected="false" data-tab="nutrition">Nutrition/Budget</button>
+      <button class="tab" type="button" aria-selected="false" data-tab="initial">Current Routine</button>
+      <button class="tab" type="button" aria-selected="false" data-tab="weekly">Weekly Load</button>
+      <button class="tab" type="button" aria-selected="false" data-tab="nutrition">Optional Nutrition</button>
       <button class="tab" type="button" aria-selected="false" data-tab="focus">Output Focus</button>
     </nav>
 
@@ -206,8 +190,51 @@
       </div>
     </section>
 
+    <section id="initial">
+      <h2>Current Routine</h2>
+      <p class="hint">Paste whatever exists. A rough routine is more useful than a perfect form.</p>
+      <div class="grid">
+        <label>Season phase
+          <select id="seasonPhase">
+            <option value=""></option>
+            <option>Pre-season</option>
+            <option>In-season</option>
+            <option>Off-season</option>
+            <option>Deload</option>
+            <option>Unknown</option>
+          </select>
+        </label>
+        <label>Planned club sessions/week
+          <input id="clubPlanned" type="number" min="0" max="14">
+        </label>
+        <label>Planned gym sessions/week
+          <input id="gymPlanned" type="number" min="0" max="14">
+        </label>
+        <label>Planned match minutes/week
+          <input id="plannedMatch" type="number" min="0" max="300">
+        </label>
+      </div>
+      <div class="grid">
+        <label>Current football routine
+          <textarea id="currentFootball" placeholder="Team sessions, match day, minutes, position demands, 11-a-side or 8-a-side..."></textarea>
+        </label>
+        <label>Current gym routine
+          <textarea id="currentGym" placeholder="Exercises, sets, reps, days, intensity, what feels heavy before matches..."></textarea>
+        </label>
+        <label>Current running or conditioning
+          <textarea id="currentConditioning" placeholder="Intervals, tempo runs, sprints, pickup games, extra cardio..."></textarea>
+        </label>
+      </div>
+      <label>Paste routine docs, notes, Markdown, or messages
+        <textarea id="rawDocs" placeholder="Paste plans, notes from a coach, markdown tables, screenshots converted to text, or anything you want Codex to analyze."></textarea>
+      </label>
+      <label>What do you think is the problem?
+        <textarea id="playerRead" placeholder="Heavy legs, low stamina, bad recovery, too much gym, unsure what to eat, etc."></textarea>
+      </label>
+    </section>
+
     <section id="weekly">
-      <h2>Weekly Update</h2>
+      <h2>Weekly Load</h2>
       <div class="grid">
         <label>Update date
           <input id="updateDate" type="date">
@@ -242,36 +269,9 @@
       </label>
     </section>
 
-    <section id="training">
-      <h2>Training</h2>
-      <div class="grid">
-        <label>Season phase
-          <select id="seasonPhase">
-            <option value=""></option>
-            <option>Pre-season</option>
-            <option>In-season</option>
-            <option>Off-season</option>
-            <option>Deload</option>
-            <option>Unknown</option>
-          </select>
-        </label>
-        <label>Planned club sessions/week
-          <input id="clubPlanned" type="number" min="0" max="14">
-        </label>
-        <label>Planned gym sessions/week
-          <input id="gymPlanned" type="number" min="0" max="14">
-        </label>
-        <label>Planned match minutes/week
-          <input id="plannedMatch" type="number" min="0" max="300">
-        </label>
-      </div>
-      <label>Extra running or conditioning
-        <textarea id="conditioning" placeholder="Intervals, tempo runs, pickup games..."></textarea>
-      </label>
-    </section>
-
     <section id="nutrition">
-      <h2>Nutrition/Budget</h2>
+      <h2>Optional Nutrition</h2>
+      <p class="hint">Fill this only if food, budget, or match-day eating is part of what you want coached.</p>
       <div class="grid">
         <label>Weekly budget
           <input id="budget" placeholder="Example: 60000 ARS/week">
@@ -301,6 +301,9 @@
       <label>Disliked foods or foods not to suggest
         <textarea id="disliked"></textarea>
       </label>
+      <label>Current diet snapshot
+        <textarea id="currentDiet" placeholder="Typical day of eating, match-day food, supplements if any, hydration..."></textarea>
+      </label>
     </section>
 
     <section id="focus">
@@ -309,17 +312,18 @@
       <label>Focus
         <select id="outputFocus">
           <option value=""></option>
+          <option>Routine evaluation</option>
+          <option>Training adaptation</option>
+          <option>Recovery/injury-risk check</option>
           <option>Diet guidance</option>
           <option>Weekly meal structure</option>
           <option>Match-day nutrition</option>
           <option>Grocery/budget plan</option>
-          <option>Training adaptation</option>
-          <option>Recovery/injury-risk check</option>
           <option>Multiple outputs</option>
         </select>
       </label>
       <label>Goal or question
-        <textarea id="goal" placeholder="Example: adapt my diet because I skipped gym but played 90 minutes."></textarea>
+        <textarea id="goal" placeholder="Example: evaluate my in-season routine and tell me what to keep or change."></textarea>
       </label>
       <p class="note">This form does not save data automatically. Export Markdown and give it to Codex.</p>
     </section>
@@ -327,19 +331,22 @@
     <div class="actions">
       <button type="button" id="generate">Generate Markdown</button>
       <button type="button" id="copy" class="secondary">Copy Markdown</button>
+      <button type="button" id="select" class="ghost">Select Markdown</button>
       <button type="button" id="download" class="ghost">Download Markdown</button>
       <button type="button" id="clear" class="ghost">Clear Form</button>
     </div>
 
-    <pre id="output" aria-live="polite"></pre>
+    <div id="status" class="status" aria-live="polite"></div>
+    <textarea id="output" class="output" readonly aria-label="Generated Markdown"></textarea>
   </main>
 
   <script>
     const fields = [
       "language", "countryCurrency", "age", "sex", "height", "weight", "position", "format", "level",
+      "currentFootball", "currentGym", "currentConditioning", "currentDiet", "rawDocs", "playerRead",
       "updateDate", "weeklyWeight", "clubCompleted", "gymCompleted", "matchMinutes", "trainingMinutes",
       "fatigue", "sleep", "soreness", "sessionChanges", "seasonPhase", "clubPlanned", "gymPlanned",
-      "plannedMatch", "conditioning", "budget", "budgetType", "cookingAccess", "timing", "restrictions",
+      "plannedMatch", "budget", "budgetType", "cookingAccess", "timing", "restrictions",
       "disliked", "outputFocus", "goal"
     ];
 
@@ -377,22 +384,20 @@ ${line("Position", "position")}
 ${line("Soccer format", "format")}
 ${line("Level", "level")}
 
-## Training Context
+## Initial State
 ${line("Season phase", "seasonPhase")}
 ${line("Planned club sessions/week", "clubPlanned")}
 ${line("Planned gym sessions/week", "gymPlanned")}
 ${line("Planned match minutes/week", "plannedMatch")}
-${line("Extra running or conditioning", "conditioning")}
+${line("Current football routine", "currentFootball")}
+${line("Current gym routine", "currentGym")}
+${line("Current running or conditioning", "currentConditioning")}
+${line("Player's read of the problem", "playerRead")}
 
-## Nutrition Context
-${line("Budget", "budget")}
-${line("Budget type", "budgetType")}
-${line("Cooking access", "cookingAccess")}
-${line("Meal timing constraints", "timing")}
-${line("Dietary restrictions or allergies", "restrictions")}
-${line("Disliked foods or foods not to suggest", "disliked")}
+## Pasted Docs Or Notes
+${value("rawDocs") || "-"}
 
-## Weekly Updates
+## Weekly Load
 ### ${date}
 ${line("Weight kg", "weeklyWeight")}
 ${line("Club sessions completed", "clubCompleted")}
@@ -404,18 +409,57 @@ ${line("Soreness/niggles", "soreness")}
 ${line("Sleep average", "sleep")}
 ${line("Skipped/extra sessions", "sessionChanges")}
 
+## Optional Nutrition Context
+${line("Current diet snapshot", "currentDiet")}
+${line("Budget", "budget")}
+${line("Budget type", "budgetType")}
+${line("Cooking access", "cookingAccess")}
+${line("Meal timing constraints", "timing")}
+${line("Dietary restrictions or allergies", "restrictions")}
+${line("Disliked foods or foods not to suggest", "disliked")}
+
 ## Requested Output
 ${line("Focus", "outputFocus")}
 ${line("Goal or question", "goal")}
 `;
-      document.getElementById("output").textContent = markdown;
+      document.getElementById("output").value = markdown;
       return markdown;
+    }
+
+    function setStatus(message) {
+      document.getElementById("status").textContent = message;
+    }
+
+    function selectMarkdown() {
+      const output = document.getElementById("output");
+      output.focus();
+      output.select();
+      output.setSelectionRange(0, output.value.length);
     }
 
     document.getElementById("generate").addEventListener("click", generateMarkdown);
     document.getElementById("copy").addEventListener("click", async () => {
       const markdown = generateMarkdown();
-      await navigator.clipboard.writeText(markdown);
+      try {
+        if (!navigator.clipboard || !window.isSecureContext) {
+          throw new Error("Clipboard API unavailable");
+        }
+        await navigator.clipboard.writeText(markdown);
+        setStatus("Copied.");
+      } catch (error) {
+        selectMarkdown();
+        try {
+          document.execCommand("copy");
+          setStatus("Copied with fallback. If nothing landed in your clipboard, press Ctrl+C now.");
+        } catch (fallbackError) {
+          setStatus("Clipboard is blocked here. The Markdown is selected; press Ctrl+C.");
+        }
+      }
+    });
+    document.getElementById("select").addEventListener("click", () => {
+      generateMarkdown();
+      selectMarkdown();
+      setStatus("Markdown selected. Press Ctrl+C to copy it.");
     });
     document.getElementById("download").addEventListener("click", () => {
       const markdown = generateMarkdown();
@@ -426,10 +470,12 @@ ${line("Goal or question", "goal")}
       link.download = "footballer-user-data-update.md";
       link.click();
       URL.revokeObjectURL(url);
+      setStatus("Download started. If this browser blocks downloads, use Select Markdown.");
     });
     document.getElementById("clear").addEventListener("click", () => {
       fields.forEach((id) => { document.getElementById(id).value = ""; });
-      document.getElementById("output").textContent = "";
+      document.getElementById("output").value = "";
+      setStatus("");
     });
 
     document.getElementById("updateDate").value = new Date().toISOString().slice(0, 10);
