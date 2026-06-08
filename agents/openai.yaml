@@ -1,4 +1,4 @@
 interface:
-  display_name: "Footballer Nutrition Coach"
-  short_description: "Adaptive soccer nutrition and training guidance"
-  default_prompt: "Use $footballer-nutrition-coach to create a budget-aware footballer diet plan and weekly check-in."
+  display_name: "Footballer Routine Coach"
+  short_description: "Evaluate soccer training, gym, recovery, and optional nutrition"
+  default_prompt: "Use $footballer-nutrition-coach to evaluate my current football routine before suggesting changes."
