@@ -22,14 +22,14 @@ Fill the relevant tabs, export Markdown, and send it back here. If you prefer, a
 
 Ask the user to choose one or more outputs when unclear:
 
-- Diet guidance
-- Weekly meal structure
-- Match-day nutrition
-- Grocery/budget plan
+- Routine evaluation
 - Training adaptation
 - Recovery/injury-risk check
+- Optional diet guidance
+- Optional match-day nutrition
+- Optional grocery/budget plan
 
-If the user asks broadly for "advice", recommend starting with diet guidance plus recovery check.
+If the user asks broadly for "advice" or "coach me", start with routine evaluation plus recovery check. Diet guidance can support that, but it is not the default center of the conversation.
 
 ## Initial Analysis
 
@@ -42,7 +42,24 @@ Before changing a routine, summarize the current state back to the player:
 - Main conflict or risk.
 - Missing data that would change the plan.
 
-Then present options with pros and cons before recommending the first adjustment.
+Then give a verdict:
+
+- Keep as is.
+- Keep with small changes.
+- Modify substantially.
+- Pause or escalate because the risk is outside the skill's scope.
+
+Avoid generic advice. Every recommendation should refer to something in the player's current routine, constraints, or stated goal.
+
+Use this structure:
+
+1. Current state.
+2. What is working.
+3. What is risky or mismatched.
+4. What to keep.
+5. What to change now.
+6. What to monitor next week.
+7. Optional nutrition support tied to the routine.
 
 ## Adaptation Logic
 
