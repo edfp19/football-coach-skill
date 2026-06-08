@@ -27,7 +27,7 @@ The repository is MIT licensed.
 - Says what to keep, what to change, what to remove, and what to monitor.
 - Adds nutrition support when it matters, using metric units.
 - Adapts to 11-a-side and 8-a-side football.
-- Accounts for club training, gym work, match minutes, skipped sessions, and season phase.
+- Accounts for club training, gym work, match minutes, skipped sessions, match calendar, rest windows, and season phase.
 - Supports pre-season, in-season, off-season, and deload contexts.
 - Asks what output you want before producing a plan.
 - Gives pros and cons when there is a real tradeoff.
@@ -78,10 +78,14 @@ That file tracks:
 - Optional age and sex
 - Position and level
 - Soccer format
+- What the player feels they lack right now
 - Season phase
 - Club sessions
 - Gym sessions
+- Last match and next match
+- Kickoff time and expected match minutes
 - Match and training minutes
+- Fixed training days, rest days, travel, and schedule constraints
 - Fatigue
 - Soreness or niggles
 - Sleep
@@ -131,13 +135,12 @@ The user should open `footballer-coach/intake-form.html`, not dig through the sk
 
 Tabs:
 
-- Profile
-- Current Routine
-- Weekly Load
-- Optional Nutrition
-- Output Focus
+- Basics
+- Match Week
+- Load Check
+- Output
 
-The Initial State tab accepts current football routines, gym routines, conditioning, diet snapshots, pasted docs, Markdown, coach notes, and the player's own read of the problem. The form exports Markdown that can be pasted into `footballer-coach/USER_DATA.md` or sent to any compatible agent or coaching workflow.
+The form is intentionally short and mostly multiple choice, aiming for a useful first evaluation in under five minutes. It asks what the player feels they lack right now, then captures basics, match timing, expected minutes, recent match load, team/gym/conditioning load, fatigue, soreness, sleep, the biggest weekly constraint, and one optional paste box for the current routine or coach notes. It exports Markdown that can be pasted into `footballer-coach/USER_DATA.md` or sent to any compatible agent or coaching workflow.
 
 The skill should offer this form by default when `USER_DATA.md` is missing or when the user asks for a routine, weekly, diet, or training update. Chat intake is still allowed, but it should be the fallback, not the first move.
 
