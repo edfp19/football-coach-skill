@@ -16,7 +16,7 @@ Do not diagnose medical issues, prescribe injury rehab, coach eating disorders, 
 ## Quick Workflow
 
 1. Check the current workspace for `USER_DATA.md` and `MEMORY.md`.
-2. If `USER_DATA.md` is missing or sparse, ask for a short intake or offer `assets/intake-form.html` for easier input.
+2. If `USER_DATA.md` is missing or sparse, or the user asks for a routine/weekly update, offer `assets/intake-form.html` as the default intake path before asking inline questions. Say that the user can use the form or answer in chat if they prefer.
 3. Ask what output the user wants before generating a plan: diet guidance, weekly meal structure, match-day nutrition, grocery/budget plan, training adaptation, or recovery check.
 4. Use `MEMORY.md` before browsing. Browse only when memory lacks the needed evidence, sources are stale, price/budget information is local and current, or the user asks for current/latest guidance.
 5. Present meaningful options with pros and cons before choosing a more conservative default.
@@ -25,6 +25,15 @@ Do not diagnose medical issues, prescribe injury rehab, coach eating disorders, 
 ## Intake And Updates
 
 Use compact prompts. Do not ask the user to write a long biography.
+
+When `USER_DATA.md` is missing or the user asks to modify a routine, weekly update, diet, or training plan, explicitly offer the HTML form first:
+
+```text
+I can make this easier with the intake form: `assets/intake-form.html`.
+Fill the relevant tabs, export Markdown, and send it back here. If you prefer, answer the short chat version instead.
+```
+
+Only ask the full chat intake immediately when the user chooses chat input, the form is unavailable, or the request is urgent/simple enough to need 2-3 fields.
 
 For a new user, ask only for what is needed for the requested output. Important fields include height, weight, optional age, optional sex, position, soccer format, season phase, club sessions, gym sessions, match minutes, fatigue, soreness, sleep, allergies, dietary restrictions, disliked foods, cooking access, budget, country/currency, and language.
 
@@ -44,7 +53,7 @@ Budget or food changes:
 Skipped/extra sessions:
 ```
 
-If the user wants easier input, copy or point them to `assets/intake-form.html`. It is a self-contained static form that exports Markdown for `USER_DATA.md`; no server is required.
+Use `assets/intake-form.html` as the preferred intake/update route. It is a self-contained static form that exports Markdown for `USER_DATA.md`; no server is required.
 
 See `references/user-data-template.md` for the file structure.
 
