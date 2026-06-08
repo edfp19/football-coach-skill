@@ -3,329 +3,98 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Footballer Nutrition Intake</title>
+  <title>Footballer Routine Intake</title>
   <style>
-    :root {
-      color-scheme: light;
-      --bg: #f5f7f2;
-      --panel: #ffffff;
-      --ink: #182016;
-      --muted: #5f6b5b;
-      --line: #d9e0d4;
-      --accent: #1f7a4d;
-      --accent-2: #255f85;
-      --warn: #a15c13;
-    }
+    :root { color-scheme: light; --bg:#f5f7f2; --panel:#fff; --ink:#172017; --muted:#5b6758; --line:#d7dfd2; --accent:#1f7a4d; --accent-2:#255f85; --warn:#9b5412; }
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.4;
-    }
-    main {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 24px;
-    }
-    header { margin-bottom: 18px; }
-    h1 { margin: 0 0 6px; font-size: 28px; }
-    p { margin: 0 0 12px; color: var(--muted); }
-    .tabs {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin: 16px 0;
-    }
-    .tab {
-      border: 1px solid var(--line);
-      background: var(--panel);
-      color: var(--ink);
-      padding: 10px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 700;
-    }
-    .tab[aria-selected="true"] {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
-    }
-    section {
-      display: none;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 18px;
-      margin-bottom: 16px;
-    }
-    section.active { display: block; }
-    h2 { margin: 0 0 14px; font-size: 20px; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-    }
-    label {
-      display: grid;
-      gap: 6px;
-      font-weight: 700;
-      color: var(--ink);
-      font-size: 14px;
-      margin-bottom: 12px;
-    }
-    input, select, textarea {
-      width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 10px;
-      font: inherit;
-      color: var(--ink);
-      background: #fff;
-    }
-    textarea { min-height: 86px; resize: vertical; }
-    .hint { font-size: 12px; color: var(--muted); font-weight: 400; }
-    .actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 18px 0;
-    }
-    button {
-      border: 0;
-      border-radius: 6px;
-      padding: 11px 14px;
-      background: var(--accent);
-      color: #fff;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    button.secondary { background: var(--accent-2); }
-    button.ghost { background: #e7ece4; color: var(--ink); }
-    textarea.output {
-      white-space: pre-wrap;
-      word-break: break-word;
-      background: #101510;
-      color: #eef8ea;
-      padding: 14px;
-      border-radius: 8px;
-      min-height: 220px;
-      overflow: auto;
-      font-family: Consolas, "Courier New", monospace;
-      font-size: 13px;
-      line-height: 1.45;
-    }
-    .note { color: var(--warn); font-weight: 700; }
-    .status {
-      min-height: 20px;
-      color: var(--muted);
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
+    body { margin:0; font-family:Arial, Helvetica, sans-serif; background:var(--bg); color:var(--ink); line-height:1.4; }
+    main { max-width:920px; margin:0 auto; padding:20px; }
+    header { margin-bottom:14px; }
+    h1 { margin:0 0 6px; font-size:26px; }
+    p { margin:0 0 10px; color:var(--muted); }
+    .tabs { display:flex; gap:8px; flex-wrap:wrap; margin:14px 0; }
+    .tab { border:1px solid var(--line); background:var(--panel); color:var(--ink); padding:9px 11px; border-radius:6px; cursor:pointer; font-weight:700; }
+    .tab[aria-selected="true"] { background:var(--accent); border-color:var(--accent); color:#fff; }
+    section { display:none; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:16px; margin-bottom:14px; }
+    section.active { display:block; }
+    h2 { margin:0 0 12px; font-size:19px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px; }
+    label { display:grid; gap:6px; font-weight:700; color:var(--ink); font-size:14px; }
+    input, select, textarea { width:100%; border:1px solid var(--line); border-radius:6px; padding:9px; font:inherit; color:var(--ink); background:#fff; }
+    textarea { min-height:96px; resize:vertical; }
+    .hint { font-size:12px; color:var(--muted); font-weight:400; }
+    .actions { display:flex; gap:10px; flex-wrap:wrap; margin:16px 0; }
+    button { border:0; border-radius:6px; padding:10px 13px; background:var(--accent); color:#fff; font-weight:700; cursor:pointer; }
+    button.secondary { background:var(--accent-2); }
+    button.ghost { background:#e7ece4; color:var(--ink); }
+    textarea.output { white-space:pre-wrap; word-break:break-word; background:#101510; color:#eef8ea; padding:14px; border-radius:8px; min-height:220px; overflow:auto; font-family:Consolas,"Courier New",monospace; font-size:13px; line-height:1.45; }
+    .note { color:var(--warn); font-weight:700; }
+    .status { min-height:20px; color:var(--muted); font-weight:700; margin-bottom:10px; }
   </style>
 </head>
 <body>
   <main>
     <header>
       <h1>Footballer Routine Intake</h1>
-      <p>Training first. Fill what matters. Leave anything blank if you do not know it or do not want to share it. Units are metric.</p>
+      <p>Five-minute version. Pick the closest option. The goal is a useful first evaluation, not a perfect file. Metric only.</p>
     </header>
 
     <nav class="tabs" aria-label="Form sections">
-      <button class="tab" type="button" aria-selected="true" data-tab="profile">Profile</button>
-      <button class="tab" type="button" aria-selected="false" data-tab="initial">Current Routine</button>
-      <button class="tab" type="button" aria-selected="false" data-tab="weekly">Weekly Load</button>
-      <button class="tab" type="button" aria-selected="false" data-tab="nutrition">Optional Nutrition</button>
-      <button class="tab" type="button" aria-selected="false" data-tab="focus">Output Focus</button>
+      <button class="tab" type="button" aria-selected="true" data-tab="basics">Basics</button>
+      <button class="tab" type="button" aria-selected="false" data-tab="match">Match Week</button>
+      <button class="tab" type="button" aria-selected="false" data-tab="load">Load Check</button>
+      <button class="tab" type="button" aria-selected="false" data-tab="focus">Output</button>
     </nav>
 
-    <section id="profile" class="active">
-      <h2>Profile</h2>
+    <section id="basics" class="active">
+      <h2>Basics</h2>
       <div class="grid">
-        <label>Language
-          <input id="language" placeholder="English, Spanish, Portuguese...">
-        </label>
-        <label>Country/currency
-          <input id="countryCurrency" placeholder="Argentina / ARS, Spain / EUR...">
-        </label>
-        <label>Age optional
-          <input id="age" type="number" min="1" max="100">
-        </label>
-        <label>Sex optional
-          <select id="sex">
-            <option value=""></option>
-            <option>Prefer not to say</option>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Other</option>
-          </select>
-        </label>
-        <label>Height cm
-          <input id="height" type="number" min="100" max="230">
-        </label>
-        <label>Weight kg
-          <input id="weight" type="number" min="30" max="180" step="0.1">
-        </label>
-        <label>Position
-          <input id="position" placeholder="Winger, fullback, midfielder...">
-        </label>
-        <label>Soccer format
-          <select id="format">
-            <option value=""></option>
-            <option>11-a-side</option>
-            <option>8-a-side</option>
-            <option>Both</option>
-          </select>
-        </label>
-        <label>Level
-          <select id="level">
-            <option value=""></option>
-            <option>Recreational</option>
-            <option>Amateur</option>
-            <option>Semi-pro</option>
-            <option>Professional</option>
-          </select>
-        </label>
+        <label>Language <input id="language" placeholder="English, Spanish, Portuguese..."></label>
+        <label>Height cm <input id="height" type="number" min="100" max="230"></label>
+        <label>Weight kg <input id="weight" type="number" min="30" max="180" step="0.1"></label>
+        <label>Position <input id="position" placeholder="Winger, fullback, midfielder..."></label>
+        <label>Format <select id="format"><option value=""></option><option>11-a-side</option><option>8-a-side</option><option>Both</option></select></label>
+        <label>Season phase <select id="seasonPhase"><option value=""></option><option>In-season</option><option>Pre-season</option><option>Off-season</option><option>Deload</option><option>Unknown</option></select></label>
+        <label>What do you feel you lack right now? <select id="feltGap"><option value=""></option><option>Stamina late in games</option><option>Speed or explosiveness</option><option>Strength/power</option><option>Recovery/fresh legs</option><option>Match-day energy</option><option>Body composition</option><option>Consistency</option><option>Not sure</option></select></label>
       </div>
     </section>
 
-    <section id="initial">
-      <h2>Current Routine</h2>
-      <p class="hint">Paste whatever exists. A rough routine is more useful than a perfect form.</p>
+    <section id="match">
+      <h2>Match Week</h2>
       <div class="grid">
-        <label>Season phase
-          <select id="seasonPhase">
-            <option value=""></option>
-            <option>Pre-season</option>
-            <option>In-season</option>
-            <option>Off-season</option>
-            <option>Deload</option>
-            <option>Unknown</option>
-          </select>
-        </label>
-        <label>Planned club sessions/week
-          <input id="clubPlanned" type="number" min="0" max="14">
-        </label>
-        <label>Planned gym sessions/week
-          <input id="gymPlanned" type="number" min="0" max="14">
-        </label>
-        <label>Planned match minutes/week
-          <input id="plannedMatch" type="number" min="0" max="300">
-        </label>
+        <label>Next match <select id="nextMatchTiming"><option value=""></option><option>Today</option><option>Tomorrow</option><option>In 2-3 days</option><option>In 4-7 days</option><option>No match this week</option><option>Unknown</option></select></label>
+        <label>Next match day <input id="nextMatchDay" placeholder="Saturday, Sunday..."></label>
+        <label>Expected minutes <select id="nextMatchMinutes"><option value=""></option><option>0-30</option><option>31-60</option><option>61-90</option><option>90+</option><option>Unknown</option></select></label>
+        <label>Last match <select id="lastMatchTiming"><option value=""></option><option>0-24 hours ago</option><option>24-48 hours ago</option><option>48-72 hours ago</option><option>4+ days ago</option><option>No recent match</option></select></label>
+        <label>Last match minutes <select id="lastMatchMinutes"><option value=""></option><option>0-30</option><option>31-60</option><option>61-90</option><option>90+</option><option>Unknown</option></select></label>
+        <label>Match importance <select id="matchImportance"><option value=""></option><option>Normal</option><option>High priority</option><option>Cup/tournament</option><option>Friendly</option><option>Unknown</option></select></label>
+        <label>Biggest constraint this week <select id="weeklyConstraint"><option value=""></option><option>Too little time</option><option>Heavy legs</option><option>Low sleep</option><option>Travel/long commute</option><option>Missed gym</option><option>Missed team training</option><option>Food/budget issue</option><option>No major constraint</option></select></label>
       </div>
-      <div class="grid">
-        <label>Current football routine
-          <textarea id="currentFootball" placeholder="Team sessions, match day, minutes, position demands, 11-a-side or 8-a-side..."></textarea>
-        </label>
-        <label>Current gym routine
-          <textarea id="currentGym" placeholder="Exercises, sets, reps, days, intensity, what feels heavy before matches..."></textarea>
-        </label>
-        <label>Current running or conditioning
-          <textarea id="currentConditioning" placeholder="Intervals, tempo runs, sprints, pickup games, extra cardio..."></textarea>
-        </label>
-      </div>
-      <label>Paste routine docs, notes, Markdown, or messages
-        <textarea id="rawDocs" placeholder="Paste plans, notes from a coach, markdown tables, screenshots converted to text, or anything you want Codex to analyze."></textarea>
-      </label>
-      <label>What do you think is the problem?
-        <textarea id="playerRead" placeholder="Heavy legs, low stamina, bad recovery, too much gym, unsure what to eat, etc."></textarea>
-      </label>
     </section>
 
-    <section id="weekly">
-      <h2>Weekly Load</h2>
+    <section id="load">
+      <h2>Load Check</h2>
       <div class="grid">
-        <label>Update date
-          <input id="updateDate" type="date">
-        </label>
-        <label>Current weight kg
-          <input id="weeklyWeight" type="number" min="30" max="180" step="0.1">
-        </label>
-        <label>Club sessions completed
-          <input id="clubCompleted" type="number" min="0" max="14">
-        </label>
-        <label>Gym sessions completed
-          <input id="gymCompleted" type="number" min="0" max="14">
-        </label>
-        <label>Match minutes
-          <input id="matchMinutes" type="number" min="0" max="300">
-        </label>
-        <label>Training minutes
-          <input id="trainingMinutes" type="number" min="0" max="1200">
-        </label>
-        <label>Fatigue 1-10
-          <input id="fatigue" type="number" min="1" max="10">
-        </label>
-        <label>Sleep average hours
-          <input id="sleep" type="number" min="0" max="14" step="0.1">
-        </label>
+        <label>Team sessions/week <select id="clubSessions"><option value=""></option><option>0</option><option>1</option><option>2</option><option>3</option><option>4+</option></select></label>
+        <label>Gym sessions/week <select id="gymSessions"><option value=""></option><option>0</option><option>1</option><option>2</option><option>3+</option></select></label>
+        <label>Extra conditioning <select id="conditioningLoad"><option value=""></option><option>None</option><option>Light</option><option>Moderate</option><option>Hard</option></select></label>
+        <label>Gym timing near match <select id="gymMatchSpacing"><option value=""></option><option>Heavy gym 3+ days before match</option><option>Heavy gym 2 days before match</option><option>Heavy gym day before match</option><option>Only light/upper near match</option><option>No gym</option><option>Unknown</option></select></label>
+        <label>Fatigue <select id="fatigue"><option value=""></option><option>1-3 fresh</option><option>4-6 normal</option><option>7-8 high</option><option>9-10 cooked</option></select></label>
+        <label>Soreness/niggles <select id="soreness"><option value=""></option><option>None</option><option>Light</option><option>Moderate</option><option>High</option><option>Sharp pain or recurring issue</option></select></label>
+        <label>Sleep <select id="sleep"><option value=""></option><option>Less than 6 h</option><option>6-7 h</option><option>7-8 h</option><option>8+ h</option></select></label>
+        <label>Budget/nutrition help <select id="nutritionHelp"><option>Not now</option><option>Basic food timing only</option><option>Match-day eating</option><option>Budget grocery help</option></select></label>
       </div>
-      <label>Soreness, niggles, or notes
-        <textarea id="soreness" placeholder="Tight hamstring, heavy legs, ankle soreness..."></textarea>
-      </label>
-      <label>Skipped or extra sessions
-        <textarea id="sessionChanges" placeholder="Skipped gym, added pickup match, reduced minutes..."></textarea>
-      </label>
-    </section>
-
-    <section id="nutrition">
-      <h2>Optional Nutrition</h2>
-      <p class="hint">Fill this only if food, budget, or match-day eating is part of what you want coached.</p>
-      <div class="grid">
-        <label>Weekly budget
-          <input id="budget" placeholder="Example: 60000 ARS/week">
-        </label>
-        <label>Budget type
-          <select id="budgetType">
-            <option value=""></option>
-            <option>Hard cap</option>
-            <option>Flexible</option>
-          </select>
-        </label>
-        <label>Cooking access
-          <select id="cookingAccess">
-            <option value=""></option>
-            <option>Full kitchen</option>
-            <option>Microwave only</option>
-            <option>No reliable kitchen</option>
-          </select>
-        </label>
-        <label>Meal timing constraints
-          <input id="timing" placeholder="Late training, early matches...">
-        </label>
-      </div>
-      <label>Dietary restrictions or allergies
-        <textarea id="restrictions"></textarea>
-      </label>
-      <label>Disliked foods or foods not to suggest
-        <textarea id="disliked"></textarea>
-      </label>
-      <label>Current diet snapshot
-        <textarea id="currentDiet" placeholder="Typical day of eating, match-day food, supplements if any, hydration..."></textarea>
-      </label>
+      <label>Optional: paste current routine or one-line summary <textarea id="routineNotes" placeholder="Example: team Tue/Thu, gym Wed, match Sat. Heavy legs by Friday."></textarea></label>
     </section>
 
     <section id="focus">
-      <h2>Output Focus</h2>
-      <p class="hint">Write the main thing you want Codex to produce from this update.</p>
-      <label>Focus
-        <select id="outputFocus">
-          <option value=""></option>
-          <option>Routine evaluation</option>
-          <option>Training adaptation</option>
-          <option>Recovery/injury-risk check</option>
-          <option>Diet guidance</option>
-          <option>Weekly meal structure</option>
-          <option>Match-day nutrition</option>
-          <option>Grocery/budget plan</option>
-          <option>Multiple outputs</option>
-        </select>
-      </label>
-      <label>Goal or question
-        <textarea id="goal" placeholder="Example: evaluate my in-season routine and tell me what to keep or change."></textarea>
-      </label>
-      <p class="note">This form does not save data automatically. Export Markdown and give it to Codex.</p>
+      <h2>Output</h2>
+      <div class="grid">
+        <label>Main output <select id="outputFocus"><option>Routine evaluation</option><option>Training adaptation</option><option>Recovery check</option><option>Optional nutrition support</option><option>Multiple outputs</option></select></label>
+        <label>Save finished routine? <select id="savePreference"><option>Ask me after the evaluation</option><option>Markdown</option><option>Word-style document</option><option>No file</option></select></label>
+      </div>
+      <label>Question or goal <textarea id="goal" placeholder="Example: evaluate my in-season week because my legs feel heavy before Saturday matches."></textarea></label>
+      <p class="note">This form does not save data automatically. Export Markdown and paste it back in chat.</p>
     </section>
 
     <div class="actions">
@@ -341,144 +110,64 @@
   </main>
 
   <script>
-    const fields = [
-      "language", "countryCurrency", "age", "sex", "height", "weight", "position", "format", "level",
-      "currentFootball", "currentGym", "currentConditioning", "currentDiet", "rawDocs", "playerRead",
-      "updateDate", "weeklyWeight", "clubCompleted", "gymCompleted", "matchMinutes", "trainingMinutes",
-      "fatigue", "sleep", "soreness", "sessionChanges", "seasonPhase", "clubPlanned", "gymPlanned",
-      "plannedMatch", "budget", "budgetType", "cookingAccess", "timing", "restrictions",
-      "disliked", "outputFocus", "goal"
-    ];
-
-    document.querySelectorAll(".tab").forEach((button) => {
-      button.addEventListener("click", () => {
-        document.querySelectorAll(".tab").forEach((tab) => tab.setAttribute("aria-selected", "false"));
-        document.querySelectorAll("section").forEach((section) => section.classList.remove("active"));
-        button.setAttribute("aria-selected", "true");
-        document.getElementById(button.dataset.tab).classList.add("active");
-      });
-    });
-
-    function value(id) {
-      return document.getElementById(id).value.trim();
-    }
-
-    function line(label, id) {
-      const v = value(id);
-      return `- ${label}: ${v}`;
-    }
-
+    const fields = ["language","height","weight","position","format","seasonPhase","feltGap","nextMatchTiming","nextMatchDay","nextMatchMinutes","lastMatchTiming","lastMatchMinutes","matchImportance","weeklyConstraint","clubSessions","gymSessions","conditioningLoad","gymMatchSpacing","fatigue","soreness","sleep","nutritionHelp","routineNotes","outputFocus","savePreference","goal"];
+    document.querySelectorAll(".tab").forEach((button) => { button.addEventListener("click", () => { document.querySelectorAll(".tab").forEach((tab) => tab.setAttribute("aria-selected", "false")); document.querySelectorAll("section").forEach((section) => section.classList.remove("active")); button.setAttribute("aria-selected", "true"); document.getElementById(button.dataset.tab).classList.add("active"); }); });
+    function value(id) { return document.getElementById(id).value.trim(); }
+    function line(label, id) { return `- ${label}: ${value(id)}`; }
     function generateMarkdown() {
-      const date = value("updateDate") || new Date().toISOString().slice(0, 10);
-      const markdown = `# Footballer User Data Update
+      const date = new Date().toISOString().slice(0, 10);
+      const markdown = `# Footballer Routine Intake
 
 ## Profile
 ${line("Language", "language")}
-${line("Country/currency", "countryCurrency")}
 - Units: metric
-${line("Age", "age")}
-${line("Sex", "sex")}
 ${line("Height cm", "height")}
 ${line("Weight kg", "weight")}
 ${line("Position", "position")}
-${line("Soccer format", "format")}
-${line("Level", "level")}
-
-## Initial State
+${line("Format", "format")}
 ${line("Season phase", "seasonPhase")}
-${line("Planned club sessions/week", "clubPlanned")}
-${line("Planned gym sessions/week", "gymPlanned")}
-${line("Planned match minutes/week", "plannedMatch")}
-${line("Current football routine", "currentFootball")}
-${line("Current gym routine", "currentGym")}
-${line("Current running or conditioning", "currentConditioning")}
-${line("Player's read of the problem", "playerRead")}
+${line("What the player feels they lack", "feltGap")}
 
-## Pasted Docs Or Notes
-${value("rawDocs") || "-"}
+## Match Calendar
+${line("Next match timing", "nextMatchTiming")}
+${line("Next match day", "nextMatchDay")}
+${line("Expected next match minutes", "nextMatchMinutes")}
+${line("Last match timing", "lastMatchTiming")}
+${line("Last match minutes", "lastMatchMinutes")}
+${line("Match importance", "matchImportance")}
+${line("Biggest constraint this week", "weeklyConstraint")}
 
-## Weekly Load
-### ${date}
-${line("Weight kg", "weeklyWeight")}
-${line("Club sessions completed", "clubCompleted")}
-${line("Gym sessions completed", "gymCompleted")}
-${line("Match minutes", "matchMinutes")}
-${line("Training minutes", "trainingMinutes")}
-${line("Fatigue 1-10", "fatigue")}
+## Current Load
+${line("Team sessions/week", "clubSessions")}
+${line("Gym sessions/week", "gymSessions")}
+${line("Extra conditioning", "conditioningLoad")}
+${line("Gym timing near match", "gymMatchSpacing")}
+${line("Fatigue", "fatigue")}
 ${line("Soreness/niggles", "soreness")}
-${line("Sleep average", "sleep")}
-${line("Skipped/extra sessions", "sessionChanges")}
+${line("Sleep", "sleep")}
+${line("Budget/nutrition help", "nutritionHelp")}
 
-## Optional Nutrition Context
-${line("Current diet snapshot", "currentDiet")}
-${line("Budget", "budget")}
-${line("Budget type", "budgetType")}
-${line("Cooking access", "cookingAccess")}
-${line("Meal timing constraints", "timing")}
-${line("Dietary restrictions or allergies", "restrictions")}
-${line("Disliked foods or foods not to suggest", "disliked")}
+## Routine Notes
+${value("routineNotes") || "-"}
 
 ## Requested Output
-${line("Focus", "outputFocus")}
-${line("Goal or question", "goal")}
+${line("Main output", "outputFocus")}
+${line("Save finished routine", "savePreference")}
+${line("Question or goal", "goal")}
+
+## Update Date
+- ${date}
 `;
       document.getElementById("output").value = markdown;
       return markdown;
     }
-
-    function setStatus(message) {
-      document.getElementById("status").textContent = message;
-    }
-
-    function selectMarkdown() {
-      const output = document.getElementById("output");
-      output.focus();
-      output.select();
-      output.setSelectionRange(0, output.value.length);
-    }
-
+    function setStatus(message) { document.getElementById("status").textContent = message; }
+    function selectMarkdown() { const output = document.getElementById("output"); output.focus(); output.select(); output.setSelectionRange(0, output.value.length); }
     document.getElementById("generate").addEventListener("click", generateMarkdown);
-    document.getElementById("copy").addEventListener("click", async () => {
-      const markdown = generateMarkdown();
-      try {
-        if (!navigator.clipboard || !window.isSecureContext) {
-          throw new Error("Clipboard API unavailable");
-        }
-        await navigator.clipboard.writeText(markdown);
-        setStatus("Copied.");
-      } catch (error) {
-        selectMarkdown();
-        try {
-          document.execCommand("copy");
-          setStatus("Copied with fallback. If nothing landed in your clipboard, press Ctrl+C now.");
-        } catch (fallbackError) {
-          setStatus("Clipboard is blocked here. The Markdown is selected; press Ctrl+C.");
-        }
-      }
-    });
-    document.getElementById("select").addEventListener("click", () => {
-      generateMarkdown();
-      selectMarkdown();
-      setStatus("Markdown selected. Press Ctrl+C to copy it.");
-    });
-    document.getElementById("download").addEventListener("click", () => {
-      const markdown = generateMarkdown();
-      const blob = new Blob([markdown], { type: "text/markdown" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = "footballer-user-data-update.md";
-      link.click();
-      URL.revokeObjectURL(url);
-      setStatus("Download started. If this browser blocks downloads, use Select Markdown.");
-    });
-    document.getElementById("clear").addEventListener("click", () => {
-      fields.forEach((id) => { document.getElementById(id).value = ""; });
-      document.getElementById("output").value = "";
-      setStatus("");
-    });
-
-    document.getElementById("updateDate").value = new Date().toISOString().slice(0, 10);
+    document.getElementById("copy").addEventListener("click", async () => { const markdown = generateMarkdown(); try { if (!navigator.clipboard || !window.isSecureContext) throw new Error("Clipboard API unavailable"); await navigator.clipboard.writeText(markdown); setStatus("Copied."); } catch (error) { selectMarkdown(); try { document.execCommand("copy"); setStatus("Copied with fallback. If nothing landed in your clipboard, press Ctrl+C now."); } catch (fallbackError) { setStatus("Clipboard is blocked here. The Markdown is selected; press Ctrl+C."); } } });
+    document.getElementById("select").addEventListener("click", () => { generateMarkdown(); selectMarkdown(); setStatus("Markdown selected. Press Ctrl+C to copy it."); });
+    document.getElementById("download").addEventListener("click", () => { const markdown = generateMarkdown(); const blob = new Blob([markdown], { type: "text/markdown" }); const url = URL.createObjectURL(blob); const link = document.createElement("a"); link.href = url; link.download = "footballer-routine-intake.md"; link.click(); URL.revokeObjectURL(url); setStatus("Download started. If this browser blocks downloads, use Select Markdown."); });
+    document.getElementById("clear").addEventListener("click", () => { fields.forEach((id) => { document.getElementById(id).value = ""; }); document.getElementById("nutritionHelp").value = "Not now"; document.getElementById("outputFocus").value = "Routine evaluation"; document.getElementById("savePreference").value = "Ask me after the evaluation"; document.getElementById("output").value = ""; setStatus(""); });
     generateMarkdown();
   </script>
 </body>
