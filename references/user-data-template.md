@@ -22,6 +22,16 @@ Use this structure in the current workspace. Keep it concise and update it when 
 - Priority:
 - Deadline or event:
 
+## Initial State
+- Current football routine:
+- Current gym routine:
+- Current running or conditioning:
+- Current diet snapshot:
+- Player's read of the problem:
+
+## Pasted Docs Or Notes
+Paste raw Markdown, routines, coach notes, or other text here when the user provides it.
+
 ## Training Context
 - Season phase: pre-season / in-season / off-season / deload / unknown
 - Club sessions per week:
