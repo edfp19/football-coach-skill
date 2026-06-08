@@ -1,0 +1,34 @@
+{
+  "name": "football-coach-skill",
+  "version": "0.1.0",
+  "description": "Install the Footballer Routine Coach instruction pack for Claude, OpenCode, or any local agent workflow.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edfp19/football-coach-skill.git"
+  },
+  "homepage": "https://github.com/edfp19/football-coach-skill#readme",
+  "bugs": {
+    "url": "https://github.com/edfp19/football-coach-skill/issues"
+  },
+  "bin": {
+    "football-coach-skill": "bin/football-coach-skill.js"
+  },
+  "files": [
+    "AGENTS.md",
+    "CLAUDE.md",
+    "LICENSE",
+    "README.md",
+    "SKILL.md",
+    "agents/",
+    "assets/",
+    "bin/",
+    "references/"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "smoke": "node bin/football-coach-skill.js help"
+  }
+}
