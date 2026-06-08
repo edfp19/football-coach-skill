@@ -17,13 +17,14 @@ Do not diagnose medical issues, prescribe injury rehab, coach eating disorders, 
 
 ## Quick Workflow
 
-1. Check the current workspace for `footballer-coach/USER_DATA.md` and `footballer-coach/MEMORY.md`. Also accept legacy root-level `USER_DATA.md` and `MEMORY.md` if they already exist.
+1. Before coaching, always check the current workspace for `footballer-coach/USER_DATA.md` and `footballer-coach/MEMORY.md`. Also accept legacy root-level `USER_DATA.md` and `MEMORY.md` if they already exist.
 2. On first use, create a user-facing `footballer-coach/` folder in the current workspace. Copy this skill's `assets/intake-form.html` to `footballer-coach/intake-form.html`, and create starter `USER_DATA.md` and `MEMORY.md` from the reference templates when missing.
 3. If `USER_DATA.md` is missing or sparse, or the user asks for a routine/weekly update, offer `footballer-coach/intake-form.html` as the default intake path before asking inline questions. Give the user the workspace path to the copied form, not only the skill asset path. Say that the user can use the form or answer in chat if they prefer.
 4. Default to routine evaluation plus recovery check. Ask before adding optional nutrition outputs such as diet guidance, meal structure, match-day nutrition, or grocery/budget planning.
 5. Use `MEMORY.md` before browsing. Browse only when memory lacks the needed evidence, sources are stale, price/budget information is local and current, or the user asks for current/latest guidance.
 6. Present meaningful options with pros and cons before choosing a more conservative default.
-7. Update `footballer-coach/USER_DATA.md` with user-provided profile, weekly updates, preferences, budget, training load, and language. Update `footballer-coach/MEMORY.md` with evidence summaries and user-specific learnings when useful.
+7. After coaching, update `footballer-coach/USER_DATA.md` with user-provided profile, weekly updates, preferences, budget, training load, and language. Update `footballer-coach/MEMORY.md` with evidence summaries and user-specific learnings when useful.
+8. After finishing a routine evaluation or new routine, ask whether the user wants it saved as an output file.
 
 ## Intake And Updates
 
@@ -121,5 +122,13 @@ Use this pattern for plans:
 5. Recommend one conservative default.
 6. Give the plan in simple blocks: keep, change, remove, recovery, monitoring, and optional nutrition support.
 7. Explain what changed from the last plan if adapting a week or missed session.
+
+After finishing a routine or routine evaluation, ask:
+
+```text
+Want me to write this down as a file? I can save it as Markdown, a Word-style document, or another format you prefer.
+```
+
+If the user says yes, create the requested file in the current workspace, preferably under `footballer-coach/outputs/`. Use Markdown by default when the user does not specify a format.
 
 For budgets, adapt to the user's country/currency and stated budget. If budget is tight, prioritize inexpensive staples and practical substitutions instead of idealized meal plans.
