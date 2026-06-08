@@ -1,10 +1,27 @@
-# Footballer Nutrition Coach
+# Footballer Routine Coach
 
-A Codex skill for evaluating a footballer's current training routine, then adapting the plan around football load, gym work, recovery, and optional nutrition.
+An open-source, agent-neutral coaching skill for evaluating a footballer's current training routine, then adapting the plan around football load, gym work, recovery, and optional nutrition.
 
 It is built for amateur, recreational, semi-pro, and professional footballers. The default use case is simple: give Codex your current football routine, gym routine, body data, fatigue, minutes, and what feels off. It evaluates what you are already doing, keeps what works, changes what does not, and only brings nutrition in when it supports the routine.
 
-No pretending everyone has a private chef. No supplement gospel. No crash dieting. No rehab cosplay.
+No pretending everyone has a private chef. No supplement gospel. No crash dieting. No rehab cosplay. No generic advice when the player gave you an actual routine.
+
+## Open Standard
+
+This is not Codex-only.
+
+The project uses plain files:
+
+- `SKILL.md` for the agent instructions
+- `assets/intake-form.html` for the standalone intake form
+- `references/*.md` for templates and workflow rules
+- `footballer-coach/USER_DATA.md` for player state
+- `footballer-coach/MEMORY.md` for evidence and user-specific memory
+- `footballer-coach/outputs/` for saved routines
+
+Any agent or app can use the standard: read `SKILL.md`, create the `footballer-coach/` workspace folder, keep `USER_DATA.md` and `MEMORY.md` current, and write outputs as normal Markdown or document files.
+
+The repository is MIT licensed.
 
 ## What It Does
 
@@ -91,6 +108,8 @@ Evidence memory is for academic links, consensus statements, institutional sourc
 
 Codex should read `MEMORY.md` before browsing. It should only research again when the memory is missing, stale, contradicted, local/current, or the user asks for latest guidance.
 
+Before coaching, the skill should read `footballer-coach/USER_DATA.md` and `footballer-coach/MEMORY.md`. After coaching, it should update both files with stable new information.
+
 ## Intake Form
 
 The skill includes:
@@ -126,6 +145,8 @@ The skill should offer this form by default when `USER_DATA.md` is missing or wh
 
 If an embedded browser blocks clipboard or download actions, use the `Select Markdown` button and copy the selected text manually.
 
+After finishing a routine evaluation or new routine, the skill should ask whether the user wants it saved as a file, for example Markdown or a Word-style document. Saved routines should go under `footballer-coach/outputs/`.
+
 ## References
 
 The skill includes focused reference files:
@@ -139,7 +160,7 @@ references/safety-boundaries.md
 
 These keep `SKILL.md` readable while still giving Codex enough structure to behave consistently.
 
-## Installation
+## Installation For Codex
 
 Install it into your Codex skills directory. The repo name can stay `football-coach-skill`, but the installed folder should be named `footballer-nutrition-coach` because that is the skill name.
 
@@ -174,6 +195,17 @@ Then invoke it with:
 ```text
 $footballer-nutrition-coach
 ```
+
+## Usage Outside Codex
+
+Use the repo as a portable agent instruction pack:
+
+1. Give your agent the contents of `SKILL.md`.
+2. Tell it to use `references/coaching-workflow.md`.
+3. Use `assets/intake-form.html` for intake, or paste the exported Markdown directly.
+4. Keep player state in `footballer-coach/USER_DATA.md`.
+5. Keep evidence and long-term user memory in `footballer-coach/MEMORY.md`.
+6. Save finished routines in `footballer-coach/outputs/`.
 
 Example prompt:
 
