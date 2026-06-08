@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Footballer Nutrition Intake</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7f2;
+      --panel: #ffffff;
+      --ink: #182016;
+      --muted: #5f6b5b;
+      --line: #d9e0d4;
+      --accent: #1f7a4d;
+      --accent-2: #255f85;
+      --warn: #a15c13;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.4;
+    }
+    main {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    header {
+      margin-bottom: 18px;
+    }
+    h1 {
+      margin: 0 0 6px;
+      font-size: 28px;
+    }
+    p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 16px 0;
+    }
+    .tab {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      padding: 10px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .tab[aria-selected="true"] {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    section {
+      display: none;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+    section.active { display: block; }
+    h2 {
+      margin: 0 0 14px;
+      font-size: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    label {
+      display: grid;
+      gap: 6px;
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 14px;
+    }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      font: inherit;
+      color: var(--ink);
+      background: #fff;
+    }
+    textarea {
+      min-height: 86px;
+      resize: vertical;
+    }
+    .hint {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 18px 0;
+    }
+    button {
+      border: 0;
+      border-radius: 6px;
+      padding: 11px 14px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button.secondary {
+      background: var(--accent-2);
+    }
+    button.ghost {
+      background: #e7ece4;
+      color: var(--ink);
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #101510;
+      color: #eef8ea;
+      padding: 14px;
+      border-radius: 8px;
+      min-height: 220px;
+      overflow: auto;
+    }
+    .note {
+      color: var(--warn);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Footballer Nutrition Intake</h1>
+      <p>Fill what matters. Leave anything blank if you do not know it or do not want to share it. Units are metric.</p>
+    </header>
+
+    <nav class="tabs" aria-label="Form sections">
+      <button class="tab" type="button" aria-selected="true" data-tab="profile">Profile</button>
+      <button class="tab" type="button" aria-selected="false" data-tab="weekly">Weekly Update</button>
+      <button class="tab" type="button" aria-selected="false" data-tab="training">Training</button>
+      <button class="tab" type="button" aria-selected="false" data-tab="nutrition">Nutrition/Budget</button>
+      <button class="tab" type="button" aria-selected="false" data-tab="focus">Output Focus</button>
+    </nav>
+
+    <section id="profile" class="active">
+      <h2>Profile</h2>
+      <div class="grid">
+        <label>Language
+          <input id="language" placeholder="English, Spanish, Portuguese...">
+        </label>
+        <label>Country/currency
+          <input id="countryCurrency" placeholder="Argentina / ARS, Spain / EUR...">
+        </label>
+        <label>Age optional
+          <input id="age" type="number" min="1" max="100">
+        </label>
+        <label>Sex optional
+          <select id="sex">
+            <option value=""></option>
+            <option>Prefer not to say</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>Height cm
+          <input id="height" type="number" min="100" max="230">
+        </label>
+        <label>Weight kg
+          <input id="weight" type="number" min="30" max="180" step="0.1">
+        </label>
+        <label>Position
+          <input id="position" placeholder="Winger, fullback, midfielder...">
+        </label>
+        <label>Soccer format
+          <select id="format">
+            <option value=""></option>
+            <option>11-a-side</option>
+            <option>8-a-side</option>
+            <option>Both</option>
+          </select>
+        </label>
+        <label>Level
+          <select id="level">
+            <option value=""></option>
+            <option>Recreational</option>
+            <option>Amateur</option>
+            <option>Semi-pro</option>
+            <option>Professional</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section id="weekly">
+      <h2>Weekly Update</h2>
+      <div class="grid">
+        <label>Update date
+          <input id="updateDate" type="date">
+        </label>
+        <label>Current weight kg
+          <input id="weeklyWeight" type="number" min="30" max="180" step="0.1">
+        </label>
+        <label>Club sessions completed
+          <input id="clubCompleted" type="number" min="0" max="14">
+        </label>
+        <label>Gym sessions completed
+          <input id="gymCompleted" type="number" min="0" max="14">
+        </label>
+        <label>Match minutes
+          <input id="matchMinutes" type="number" min="0" max="300">
+        </label>
+        <label>Training minutes
+          <input id="trainingMinutes" type="number" min="0" max="1200">
+        </label>
+        <label>Fatigue 1-10
+          <input id="fatigue" type="number" min="1" max="10">
+        </label>
+        <label>Sleep average hours
+          <input id="sleep" type="number" min="0" max="14" step="0.1">
+        </label>
+      </div>
+      <label>Soreness, niggles, or notes
+        <textarea id="soreness" placeholder="Tight hamstring, heavy legs, ankle soreness..."></textarea>
+      </label>
+      <label>Skipped or extra sessions
+        <textarea id="sessionChanges" placeholder="Skipped gym, added pickup match, reduced minutes..."></textarea>
+      </label>
+    </section>
+
+    <section id="training">
+      <h2>Training</h2>
+      <div class="grid">
+        <label>Season phase
+          <select id="seasonPhase">
+            <option value=""></option>
+            <option>Pre-season</option>
+            <option>In-season</option>
+            <option>Off-season</option>
+            <option>Deload</option>
+            <option>Unknown</option>
+          </select>
+        </label>
+        <label>Planned club sessions/week
+          <input id="clubPlanned" type="number" min="0" max="14">
+        </label>
+        <label>Planned gym sessions/week
+          <input id="gymPlanned" type="number" min="0" max="14">
+        </label>
+        <label>Planned match minutes/week
+          <input id="plannedMatch" type="number" min="0" max="300">
+        </label>
+      </div>
+      <label>Extra running or conditioning
+        <textarea id="conditioning" placeholder="Intervals, tempo runs, pickup games..."></textarea>
+      </label>
+    </section>
+
+    <section id="nutrition">
+      <h2>Nutrition/Budget</h2>
+      <div class="grid">
+        <label>Weekly budget
+          <input id="budget" placeholder="Example: 60000 ARS/week">
+        </label>
+        <label>Budget type
+          <select id="budgetType">
+            <option value=""></option>
+            <option>Hard cap</option>
+            <option>Flexible</option>
+          </select>
+        </label>
+        <label>Cooking access
+          <select id="cookingAccess">
+            <option value=""></option>
+            <option>Full kitchen</option>
+            <option>Microwave only</option>
+            <option>No reliable kitchen</option>
+          </select>
+        </label>
+        <label>Meal timing constraints
+          <input id="timing" placeholder="Late training, early matches...">
+        </label>
+      </div>
+      <label>Dietary restrictions or allergies
+        <textarea id="restrictions"></textarea>
+      </label>
+      <label>Disliked foods or foods not to suggest
+        <textarea id="disliked"></textarea>
+      </label>
+    </section>
+
+    <section id="focus">
+      <h2>Output Focus</h2>
+      <p class="hint">Write the main thing you want Codex to produce from this update.</p>
+      <label>Focus
+        <select id="outputFocus">
+          <option value=""></option>
+          <option>Diet guidance</option>
+          <option>Weekly meal structure</option>
+          <option>Match-day nutrition</option>
+          <option>Grocery/budget plan</option>
+          <option>Training adaptation</option>
+          <option>Recovery/injury-risk check</option>
+          <option>Multiple outputs</option>
+        </select>
+      </label>
+      <label>Goal or question
+        <textarea id="goal" placeholder="Example: adapt my diet because I skipped gym but played 90 minutes."></textarea>
+      </label>
+      <p class="note">This form does not save data automatically. Export Markdown and give it to Codex.</p>
+    </section>
+
+    <div class="actions">
+      <button type="button" id="generate">Generate Markdown</button>
+      <button type="button" id="copy" class="secondary">Copy Markdown</button>
+      <button type="button" id="download" class="ghost">Download Markdown</button>
+      <button type="button" id="clear" class="ghost">Clear Form</button>
+    </div>
+
+    <pre id="output" aria-live="polite"></pre>
+  </main>
+
+  <script>
+    const fields = [
+      "language", "countryCurrency", "age", "sex", "height", "weight", "position", "format", "level",
+      "updateDate", "weeklyWeight", "clubCompleted", "gymCompleted", "matchMinutes", "trainingMinutes",
+      "fatigue", "sleep", "soreness", "sessionChanges", "seasonPhase", "clubPlanned", "gymPlanned",
+      "plannedMatch", "conditioning", "budget", "budgetType", "cookingAccess", "timing", "restrictions",
+      "disliked", "outputFocus", "goal"
+    ];
+
+    document.querySelectorAll(".tab").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach((tab) => tab.setAttribute("aria-selected", "false"));
+        document.querySelectorAll("section").forEach((section) => section.classList.remove("active"));
+        button.setAttribute("aria-selected", "true");
+        document.getElementById(button.dataset.tab).classList.add("active");
+      });
+    });
+
+    function value(id) {
+      return document.getElementById(id).value.trim();
+    }
+
+    function line(label, id) {
+      const v = value(id);
+      return `- ${label}: ${v}`;
+    }
+
+    function generateMarkdown() {
+      const date = value("updateDate") || new Date().toISOString().slice(0, 10);
+      const markdown = `# Footballer User Data Update
+
+## Profile
+${line("Language", "language")}
+${line("Country/currency", "countryCurrency")}
+- Units: metric
+${line("Age", "age")}
+${line("Sex", "sex")}
+${line("Height cm", "height")}
+${line("Weight kg", "weight")}
+${line("Position", "position")}
+${line("Soccer format", "format")}
+${line("Level", "level")}
+
+## Training Context
+${line("Season phase", "seasonPhase")}
+${line("Planned club sessions/week", "clubPlanned")}
+${line("Planned gym sessions/week", "gymPlanned")}
+${line("Planned match minutes/week", "plannedMatch")}
+${line("Extra running or conditioning", "conditioning")}
+
+## Nutrition Context
+${line("Budget", "budget")}
+${line("Budget type", "budgetType")}
+${line("Cooking access", "cookingAccess")}
+${line("Meal timing constraints", "timing")}
+${line("Dietary restrictions or allergies", "restrictions")}
+${line("Disliked foods or foods not to suggest", "disliked")}
+
+## Weekly Updates
+### ${date}
+${line("Weight kg", "weeklyWeight")}
+${line("Club sessions completed", "clubCompleted")}
+${line("Gym sessions completed", "gymCompleted")}
+${line("Match minutes", "matchMinutes")}
+${line("Training minutes", "trainingMinutes")}
+${line("Fatigue 1-10", "fatigue")}
+${line("Soreness/niggles", "soreness")}
+${line("Sleep average", "sleep")}
+${line("Skipped/extra sessions", "sessionChanges")}
+
+## Requested Output
+${line("Focus", "outputFocus")}
+${line("Goal or question", "goal")}
+`;
+      document.getElementById("output").textContent = markdown;
+      return markdown;
+    }
+
+    document.getElementById("generate").addEventListener("click", generateMarkdown);
+    document.getElementById("copy").addEventListener("click", async () => {
+      const markdown = generateMarkdown();
+      await navigator.clipboard.writeText(markdown);
+    });
+    document.getElementById("download").addEventListener("click", () => {
+      const markdown = generateMarkdown();
+      const blob = new Blob([markdown], { type: "text/markdown" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "footballer-user-data-update.md";
+      link.click();
+      URL.revokeObjectURL(url);
+    });
+    document.getElementById("clear").addEventListener("click", () => {
+      fields.forEach((id) => { document.getElementById(id).value = ""; });
+      document.getElementById("output").textContent = "";
+    });
+
+    document.getElementById("updateDate").value = new Date().toISOString().slice(0, 10);
+    generateMarkdown();
+  </script>
+</body>
+</html>
