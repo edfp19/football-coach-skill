@@ -19,6 +19,7 @@ Use this structure in the current workspace. Keep it concise and update it when 
 
 ## Current Goal
 - Focus:
+- What the player feels they lack:
 - Priority:
 - Deadline or event:
 
@@ -32,6 +33,31 @@ Use this structure in the current workspace. Keep it concise and update it when 
 ## Pasted Docs Or Notes
 Paste raw Markdown, routines, coach notes, or other text here when the user provides it.
 
+## Active Routine / Current Plan
+- Current weekly structure:
+- Current gym structure:
+- Current conditioning:
+- Current recovery rules:
+- Current optional nutrition support:
+
+## Last Coach Recommendation
+- Date:
+- Recommendation:
+- Reason:
+- User accepted / changed / rejected:
+
+## Response To Last Plan
+- What worked:
+- What did not:
+- Adherence:
+- Performance notes:
+- Recovery notes:
+
+## Monitoring Rules
+- Watch:
+- Change plan if:
+- Keep plan if:
+
 ## Training Context
 - Season phase: pre-season / in-season / off-season / deload / unknown
 - Club sessions per week:
@@ -39,6 +65,26 @@ Paste raw Markdown, routines, coach notes, or other text here when the user prov
 - Match minutes per week:
 - Extra running or conditioning:
 - Skipped or added sessions:
+
+## Match Calendar
+- Last match date:
+- Last match minutes:
+- Next match day:
+- Next match date:
+- Kickoff time:
+- Expected next match minutes:
+- Match importance:
+- Biggest constraint this week:
+
+## Rest And Availability
+- Fixed training days:
+- Fixed gym days:
+- Gym days relative to match:
+- Hardest session of the week:
+- Typical session intensity/RPE:
+- Available rest days:
+- Unavailable days:
+- Travel or schedule constraints:
 
 ## Recovery Context
 - Fatigue 1-10:
@@ -64,11 +110,16 @@ Paste raw Markdown, routines, coach notes, or other text here when the user prov
 - Gym sessions completed:
 - Match minutes:
 - Training minutes:
+- Last match date:
+- Next match date:
+- Expected next match minutes:
 - Fatigue 1-10:
 - Soreness/niggles:
+- Soreness severity 1-10:
 - Sleep average:
 - Budget or food changes:
 - Skipped/extra sessions:
+- What changed since the last plan:
 - Coach notes:
 ```
 
