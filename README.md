@@ -106,6 +106,8 @@ Tabs:
 
 The form exports Markdown that can be pasted into `USER_DATA.md` or given to Codex.
 
+The skill should offer this form by default when `USER_DATA.md` is missing or when the user asks for a routine, weekly, diet, or training update. Chat intake is still allowed, but it should be the fallback, not the first move.
+
 ## References
 
 The skill includes focused reference files:
@@ -121,10 +123,32 @@ These keep `SKILL.md` readable while still giving Codex enough structure to beha
 
 ## Installation
 
-Copy the folder into your Codex skills directory:
+Install it into your Codex skills directory. The repo name can stay `football-coach-skill`, but the installed folder should be named `footballer-nutrition-coach` because that is the skill name.
+
+### Windows PowerShell
+
+```powershell
+git clone https://github.com/edfp19/football-coach-skill.git "$env:USERPROFILE\.codex\skills\footballer-nutrition-coach"
+```
+
+### macOS or Linux
+
+```bash
+git clone https://github.com/edfp19/football-coach-skill.git ~/.codex/skills/footballer-nutrition-coach
+```
+
+### Manual Install
+
+Download the repo as a ZIP, extract it, rename the extracted folder to:
 
 ```text
-C:\Users\Administrator\.codex\skills\footballer-nutrition-coach
+footballer-nutrition-coach
+```
+
+Then move it into:
+
+```text
+~/.codex/skills/
 ```
 
 Then invoke it with:
