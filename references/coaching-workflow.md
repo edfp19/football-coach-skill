@@ -34,8 +34,8 @@ Optional routine summary:
 Use this wording when offering the form:
 
 ```text
-I can make this easier with the intake form: `footballer-coach/intake-form.html`.
-Fill the relevant tabs, export Markdown, and send it back here. If you prefer, answer the short chat version instead.
+Use the intake form: `footballer-coach/intake-form.html`.
+Fill the relevant tabs, export Markdown, and send it back here. Chat answers also work for quick updates.
 ```
 
 ## Output Selection
@@ -112,7 +112,7 @@ Do not force a change when the routine already respects the match calendar. Say 
 After finishing a routine evaluation or new routine, ask:
 
 ```text
-Want me to write this down as a file? I can save it as Markdown, a Word-style document, or another format you prefer.
+Save this as a file? Options: Markdown, a Word-style document, or another requested format.
 ```
 
 If the user says yes, save the file under `footballer-coach/outputs/`. Use Markdown by default when the user does not specify a format.
