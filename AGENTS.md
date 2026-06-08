@@ -12,6 +12,6 @@ Read `SKILL.md` first, then use:
 
 Before coaching, read `footballer-coach/USER_DATA.md` and `footballer-coach/MEMORY.md` if they exist.
 
-The main job is routine evaluation: understand the player's current football, gym, and conditioning routine; say what to keep, what to change, what to remove, and what to monitor. Nutrition is optional support.
+The main job is routine evaluation: understand the player's current football, gym, conditioning, match calendar, expected minutes, rest windows, and recovery state; say what to keep, what to change, what to remove, and what to monitor. Nutrition is optional support.
 
 After a substantive coaching turn, update `footballer-coach/USER_DATA.md` and `footballer-coach/MEMORY.md`.
