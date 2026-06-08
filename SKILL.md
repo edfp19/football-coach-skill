@@ -15,21 +15,31 @@ Do not diagnose medical issues, prescribe injury rehab, coach eating disorders, 
 
 ## Quick Workflow
 
-1. Check the current workspace for `USER_DATA.md` and `MEMORY.md`.
-2. If `USER_DATA.md` is missing or sparse, or the user asks for a routine/weekly update, offer `assets/intake-form.html` as the default intake path before asking inline questions. Say that the user can use the form or answer in chat if they prefer.
-3. Ask what output the user wants before generating a plan: diet guidance, weekly meal structure, match-day nutrition, grocery/budget plan, training adaptation, or recovery check.
-4. Use `MEMORY.md` before browsing. Browse only when memory lacks the needed evidence, sources are stale, price/budget information is local and current, or the user asks for current/latest guidance.
-5. Present meaningful options with pros and cons before choosing a more conservative default.
-6. Update `USER_DATA.md` with user-provided profile, weekly updates, preferences, budget, training load, and language. Update `MEMORY.md` with evidence summaries and user-specific learnings when useful.
+1. Check the current workspace for `footballer-coach/USER_DATA.md` and `footballer-coach/MEMORY.md`. Also accept legacy root-level `USER_DATA.md` and `MEMORY.md` if they already exist.
+2. On first use, create a user-facing `footballer-coach/` folder in the current workspace. Copy this skill's `assets/intake-form.html` to `footballer-coach/intake-form.html`, and create starter `USER_DATA.md` and `MEMORY.md` from the reference templates when missing.
+3. If `USER_DATA.md` is missing or sparse, or the user asks for a routine/weekly update, offer `footballer-coach/intake-form.html` as the default intake path before asking inline questions. Give the user the workspace path to the copied form, not only the skill asset path. Say that the user can use the form or answer in chat if they prefer.
+4. Ask what output the user wants before generating a plan: diet guidance, weekly meal structure, match-day nutrition, grocery/budget plan, training adaptation, or recovery check.
+5. Use `MEMORY.md` before browsing. Browse only when memory lacks the needed evidence, sources are stale, price/budget information is local and current, or the user asks for current/latest guidance.
+6. Present meaningful options with pros and cons before choosing a more conservative default.
+7. Update `footballer-coach/USER_DATA.md` with user-provided profile, weekly updates, preferences, budget, training load, and language. Update `footballer-coach/MEMORY.md` with evidence summaries and user-specific learnings when useful.
 
 ## Intake And Updates
 
 Use compact prompts. Do not ask the user to write a long biography.
 
-When `USER_DATA.md` is missing or the user asks to modify a routine, weekly update, diet, or training plan, explicitly offer the HTML form first:
+When `USER_DATA.md` is missing or the user asks to modify a routine, weekly update, diet, or training plan, create/update the workspace folder first:
 
 ```text
-I can make this easier with the intake form: `assets/intake-form.html`.
+footballer-coach/
+  intake-form.html
+  USER_DATA.md
+  MEMORY.md
+```
+
+Copy `assets/intake-form.html` from the skill into `footballer-coach/intake-form.html`. Then explicitly offer the copied HTML form first:
+
+```text
+I can make this easier with the intake form: `footballer-coach/intake-form.html`.
 Fill the relevant tabs, export Markdown, and send it back here. If you prefer, answer the short chat version instead.
 ```
 
@@ -53,7 +63,7 @@ Budget or food changes:
 Skipped/extra sessions:
 ```
 
-Use `assets/intake-form.html` as the preferred intake/update route. It is a self-contained static form that exports Markdown for `USER_DATA.md`; no server is required.
+Use `footballer-coach/intake-form.html` as the preferred intake/update route after copying it from `assets/intake-form.html`. It is a self-contained static form that exports Markdown for `USER_DATA.md`; no server is required.
 
 See `references/user-data-template.md` for the file structure.
 
