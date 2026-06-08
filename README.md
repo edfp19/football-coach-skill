@@ -2,13 +2,11 @@
 
 An open-source, agent-neutral coaching skill for evaluating a footballer's current training routine, then adapting the plan around football load, gym work, recovery, and optional nutrition.
 
-It is built for amateur, recreational, semi-pro, and professional footballers. The default use case is simple: give Codex your current football routine, gym routine, body data, fatigue, minutes, and what feels off. It evaluates what you are already doing, keeps what works, changes what does not, and only brings nutrition in when it supports the routine.
+It is built for amateur, recreational, semi-pro, and professional footballers. The default use case is simple: provide your current football routine, gym routine, body data, fatigue, minutes, and what feels off. The coach evaluates what you are already doing, keeps what works, changes what does not, and only brings nutrition in when it supports the routine.
 
 No pretending everyone has a private chef. No supplement gospel. No crash dieting. No rehab cosplay. No generic advice when the player gave you an actual routine.
 
 ## Open Standard
-
-This is not Codex-only.
 
 The project uses plain files:
 
@@ -19,7 +17,7 @@ The project uses plain files:
 - `footballer-coach/MEMORY.md` for evidence and user-specific memory
 - `footballer-coach/outputs/` for saved routines
 
-Any agent or app can use the standard: read `SKILL.md`, create the `footballer-coach/` workspace folder, keep `USER_DATA.md` and `MEMORY.md` current, and write outputs as normal Markdown or document files.
+Any agent, app, or workflow can use the standard: read `SKILL.md`, create the `footballer-coach/` workspace folder, keep `USER_DATA.md` and `MEMORY.md` current, and write outputs as normal Markdown or document files.
 
 The repository is MIT licensed.
 
@@ -66,7 +64,7 @@ If something sounds medical, recurring, severe, or risky, the skill should tell 
 
 ## User Data
 
-The skill expects Codex to keep a `USER_DATA.md` file in a workspace folder named:
+The workflow keeps a `USER_DATA.md` file in a workspace folder named:
 
 ```text
 footballer-coach/
@@ -106,7 +104,7 @@ It keeps two things separate:
 
 Evidence memory is for academic links, consensus statements, institutional sources, summaries, and practical takeaways. User-specific memory is for things like "do not suggest eggs", budget constraints, adherence notes, and what worked before.
 
-Codex should read `MEMORY.md` before browsing. It should only research again when the memory is missing, stale, contradicted, local/current, or the user asks for latest guidance.
+The coach should read `MEMORY.md` before browsing. It should only research again when the memory is missing, stale, contradicted, local/current, or the user asks for latest guidance.
 
 Before coaching, the skill should read `footballer-coach/USER_DATA.md` and `footballer-coach/MEMORY.md`. After coaching, it should update both files with stable new information.
 
@@ -139,7 +137,7 @@ Tabs:
 - Optional Nutrition
 - Output Focus
 
-The Initial State tab accepts current football routines, gym routines, conditioning, diet snapshots, pasted docs, Markdown, coach notes, and the player's own read of the problem. The form exports Markdown that can be pasted into `footballer-coach/USER_DATA.md` or given to Codex.
+The Initial State tab accepts current football routines, gym routines, conditioning, diet snapshots, pasted docs, Markdown, coach notes, and the player's own read of the problem. The form exports Markdown that can be pasted into `footballer-coach/USER_DATA.md` or sent to any compatible agent or coaching workflow.
 
 The skill should offer this form by default when `USER_DATA.md` is missing or when the user asks for a routine, weekly, diet, or training update. Chat intake is still allowed, but it should be the fallback, not the first move.
 
@@ -158,22 +156,22 @@ references/coaching-workflow.md
 references/safety-boundaries.md
 ```
 
-These keep `SKILL.md` readable while still giving Codex enough structure to behave consistently.
+These keep `SKILL.md` readable while still giving the workflow enough structure to behave consistently.
 
-## Installation For Codex
+## Installation
 
-Install it into your Codex skills directory. The repo name can stay `football-coach-skill`, but the installed folder should be named `footballer-nutrition-coach` because that is the skill name.
+Clone or download the repository wherever your agent or workflow reads instruction packs. If your tool expects a skill folder name, use `footballer-nutrition-coach`.
 
 ### Windows PowerShell
 
 ```powershell
-git clone https://github.com/edfp19/football-coach-skill.git "$env:USERPROFILE\.codex\skills\footballer-nutrition-coach"
+git clone https://github.com/edfp19/football-coach-skill.git footballer-nutrition-coach
 ```
 
 ### macOS or Linux
 
 ```bash
-git clone https://github.com/edfp19/football-coach-skill.git ~/.codex/skills/footballer-nutrition-coach
+git clone https://github.com/edfp19/football-coach-skill.git footballer-nutrition-coach
 ```
 
 ### Manual Install
@@ -184,19 +182,7 @@ Download the repo as a ZIP, extract it, rename the extracted folder to:
 footballer-nutrition-coach
 ```
 
-Then move it into:
-
-```text
-~/.codex/skills/
-```
-
-Then invoke it with:
-
-```text
-$footballer-nutrition-coach
-```
-
-## Usage Outside Codex
+## Usage
 
 Use the repo as a portable agent instruction pack:
 
@@ -210,7 +196,72 @@ Use the repo as a portable agent instruction pack:
 Example prompt:
 
 ```text
-Use $footballer-nutrition-coach. I weigh 74 kg, I am in season, I skipped gym today, and I played 90 minutes. Adapt my diet.
+Use the footballer routine coach. I weigh 74 kg, I am in season, I skipped gym today, and I played 90 minutes. Evaluate my routine and tell me what to keep or change.
+```
+
+## Claude Tutorial
+
+Claude can use this as a normal instruction pack.
+
+1. Clone or download this repository.
+2. Open a conversation with Claude.
+3. Attach or paste `SKILL.md`.
+4. Attach or paste `references/coaching-workflow.md`.
+5. If you want structured intake, open `assets/intake-form.html`, fill it in, export Markdown, and paste that into Claude.
+6. Ask Claude to maintain `footballer-coach/USER_DATA.md` and `footballer-coach/MEMORY.md` as plain Markdown files.
+
+Prompt:
+
+```text
+Use this footballer routine coach instruction pack. Read SKILL.md and references/coaching-workflow.md. Evaluate my current routine first; do not give generic advice.
+```
+
+For Claude Code, keep the repository as a project folder. `CLAUDE.md` points Claude Code to the main instructions, and `SKILL.md` contains the coaching standard.
+
+Claude Code project flow:
+
+```bash
+git clone https://github.com/edfp19/football-coach-skill.git footballer-nutrition-coach
+cd footballer-nutrition-coach
+claude
+```
+
+Then prompt:
+
+```text
+Use the local footballer routine coach. Read CLAUDE.md and SKILL.md, create footballer-coach/ if needed, and evaluate my current routine.
+```
+
+## OpenCode Tutorial
+
+OpenCode can use the repo through `AGENTS.md`, a common instruction file for coding agents.
+
+1. Clone the repository.
+2. Open the folder in OpenCode.
+3. OpenCode should read `AGENTS.md`.
+4. `AGENTS.md` points it to `SKILL.md`, the workflow references, the intake form, and the memory files.
+5. Ask it to create `footballer-coach/` on first use.
+
+```bash
+git clone https://github.com/edfp19/football-coach-skill.git footballer-nutrition-coach
+cd footballer-nutrition-coach
+opencode
+```
+
+Prompt:
+
+```text
+Use AGENTS.md. Start the footballer routine coach, create footballer-coach/ if needed, and evaluate my current training routine before suggesting changes.
+```
+
+The expected workspace state after first use:
+
+```text
+footballer-coach/
+  intake-form.html
+  USER_DATA.md
+  MEMORY.md
+  outputs/
 ```
 
 ## Validation
@@ -222,7 +273,5 @@ The skill was structurally checked for:
 - Frontmatter containing only `name` and `description`
 - Required reference files
 - Required intake form
-- Installed copy under `.codex\skills`
-- GitHub-ready copy under `Downloads`
-
-The official `quick_validate.py` script could not run in this environment because the bundled Python runtime is missing `PyYAML`.
+- Required instruction and reference files
+- GitHub-ready repository structure
