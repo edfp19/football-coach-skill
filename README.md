@@ -1,10 +1,10 @@
 # Footballer Routine Coach
 
-An open-source, agent-neutral coaching skill for evaluating a footballer's current training routine, then adapting the plan around football load, gym work, recovery, and optional nutrition.
+An open-source coaching instruction pack for evaluating a footballer's current training routine, then adapting the plan around football load, gym work, recovery, and optional nutrition.
 
-It is built for amateur, recreational, semi-pro, and professional footballers. The default use case is simple: provide your current football routine, gym routine, body data, fatigue, minutes, and what feels off. The coach evaluates what you are already doing, keeps what works, changes what does not, and only brings nutrition in when it supports the routine.
+Built for amateur, recreational, semi-pro, and professional footballers. The default use case is simple: collect the current football routine, gym routine, body data, fatigue, minutes, and what feels off. The coach evaluates the current routine, keeps what works, changes what does not, and only brings nutrition in when it supports the routine.
 
-No pretending everyone has a private chef. No supplement gospel. No crash dieting. No rehab cosplay. No generic advice when the player gave you an actual routine.
+The skill avoids private-chef assumptions, supplement-heavy plans, crash dieting, rehab protocols, and generic advice when the player provides an actual routine.
 
 ## Open Standard
 
@@ -29,7 +29,7 @@ The repository is MIT licensed.
 - Adapts to 11-a-side and 8-a-side football.
 - Accounts for club training, gym work, match minutes, skipped sessions, match calendar, rest windows, and season phase.
 - Supports pre-season, in-season, off-season, and deload contexts.
-- Asks what output you want before producing a plan.
+- Asks for the output focus before producing a plan.
 - Gives pros and cons when there is a real tradeoff.
 - Steers toward recovery and injury-risk reduction when fatigue, soreness, or minutes are high.
 - Adapts to the user's budget, country, currency, cooking access, restrictions, and disliked foods.
@@ -60,7 +60,7 @@ The skill explicitly avoids:
 - Banned substance advice
 - Supplement-heavy plans
 
-If something sounds medical, recurring, severe, or risky, the skill should tell the user to speak with a qualified professional.
+Medical, recurring, severe, or risky cases are routed to a qualified professional.
 
 ## User Data
 
@@ -78,7 +78,6 @@ That file tracks:
 - Optional age and sex
 - Position and level
 - Soccer format
-- What the player feels they lack right now
 - Season phase
 - Club sessions
 - Gym sessions
@@ -108,9 +107,9 @@ It keeps two things separate:
 
 Evidence memory is for academic links, consensus statements, institutional sources, summaries, and practical takeaways. User-specific memory is for things like "do not suggest eggs", budget constraints, adherence notes, and what worked before.
 
-The coach should read `MEMORY.md` before browsing. It should only research again when the memory is missing, stale, contradicted, local/current, or the user asks for latest guidance.
+A compatible agent reads `MEMORY.md` before browsing and researches again only when memory is missing, stale, contradicted, local/current, or the user asks for latest guidance.
 
-Before coaching, the skill should read `footballer-coach/USER_DATA.md` and `footballer-coach/MEMORY.md`. After coaching, it should update both files with stable new information.
+Before coaching, the workflow reads `footballer-coach/USER_DATA.md` and `footballer-coach/MEMORY.md`. After coaching, it updates both files with stable new information.
 
 ## Intake Form
 
@@ -122,7 +121,7 @@ assets/intake-form.html
 
 It is a self-contained static HTML form. No server needed.
 
-On first use, the skill should create:
+On first use, the workflow creates:
 
 ```text
 footballer-coach/
@@ -131,7 +130,7 @@ footballer-coach/
   MEMORY.md
 ```
 
-The user should open `footballer-coach/intake-form.html`, not dig through the skill install directory.
+The intake form lives at `footballer-coach/intake-form.html`, so the skill install directory does not need to be opened.
 
 Tabs:
 
@@ -142,11 +141,11 @@ Tabs:
 
 The form is intentionally short and mostly multiple choice, aiming for a useful first evaluation in under five minutes. It asks what the player feels they lack right now, then captures basics, match timing, expected minutes, recent match load, team/gym/conditioning load, fatigue, soreness, sleep, the biggest weekly constraint, and one optional paste box for the current routine or coach notes. It exports Markdown that can be pasted into `footballer-coach/USER_DATA.md` or sent to any compatible agent or coaching workflow.
 
-The skill should offer this form by default when `USER_DATA.md` is missing or when the user asks for a routine, weekly, diet, or training update. Chat intake is still allowed, but it should be the fallback, not the first move.
+The intake form is offered by default when `USER_DATA.md` is missing or when the user asks for a routine, weekly, diet, or training update. Chat intake is still available for quick updates.
 
 If an embedded browser blocks clipboard or download actions, use the `Select Markdown` button and copy the selected text manually.
 
-After finishing a routine evaluation or new routine, the skill should ask whether the user wants it saved as a file, for example Markdown or a Word-style document. Saved routines should go under `footballer-coach/outputs/`.
+After finishing a routine evaluation or new routine, the workflow asks whether the result should be saved as a file, for example Markdown or a Word-style document. Saved routines go under `footballer-coach/outputs/`.
 
 ## References
 
@@ -163,15 +162,44 @@ These keep `SKILL.md` readable while still giving the workflow enough structure 
 
 ## Installation
 
-Clone or download the repository wherever your agent or workflow reads instruction packs. If your tool expects a skill folder name, use `footballer-nutrition-coach`.
+### npx
 
-### Windows PowerShell
+Install directly from GitHub:
 
-```powershell
-git clone https://github.com/edfp19/football-coach-skill.git footballer-nutrition-coach
+```bash
+npx github:edfp19/football-coach-skill install claude
 ```
 
-### macOS or Linux
+Show installer help:
+
+```bash
+npx github:edfp19/football-coach-skill help
+```
+
+Targets:
+
+```bash
+npx github:edfp19/football-coach-skill install claude
+npx github:edfp19/football-coach-skill install claude-project
+npx github:edfp19/football-coach-skill install opencode
+npx github:edfp19/football-coach-skill install local
+```
+
+- `claude` installs a personal Claude skill under `~/.claude/skills/footballer-nutrition-coach`.
+- `claude-project` installs a project skill under `.claude/skills/footballer-nutrition-coach`.
+- `opencode` installs the pack under `.footballer-routine-coach/` and adds a marked section to `AGENTS.md`.
+- `local` copies the instruction pack into `./footballer-nutrition-coach` by default, or into the directory passed after `local`.
+
+Use `--dry-run` to preview and `--force` to overwrite existing files:
+
+```bash
+npx github:edfp19/football-coach-skill install claude --dry-run
+npx github:edfp19/football-coach-skill install claude --force
+```
+
+### Clone
+
+Clone or download the repository wherever the target agent or workflow reads instruction packs. If the tool expects a skill folder name, use `footballer-nutrition-coach`.
 
 ```bash
 git clone https://github.com/edfp19/football-coach-skill.git footballer-nutrition-coach
@@ -189,8 +217,8 @@ footballer-nutrition-coach
 
 Use the repo as a portable agent instruction pack:
 
-1. Give your agent the contents of `SKILL.md`.
-2. Tell it to use `references/coaching-workflow.md`.
+1. Provide the agent with `SKILL.md`.
+2. Point it to `references/coaching-workflow.md`.
 3. Use `assets/intake-form.html` for intake, or paste the exported Markdown directly.
 4. Keep player state in `footballer-coach/USER_DATA.md`.
 5. Keep evidence and long-term user memory in `footballer-coach/MEMORY.md`.
@@ -210,7 +238,7 @@ Claude can use this as a normal instruction pack.
 2. Open a conversation with Claude.
 3. Attach or paste `SKILL.md`.
 4. Attach or paste `references/coaching-workflow.md`.
-5. If you want structured intake, open `assets/intake-form.html`, fill it in, export Markdown, and paste that into Claude.
+5. For structured intake, open `assets/intake-form.html`, fill it in, export Markdown, and paste that into Claude.
 6. Ask Claude to maintain `footballer-coach/USER_DATA.md` and `footballer-coach/MEMORY.md` as plain Markdown files.
 
 Prompt:
@@ -266,15 +294,3 @@ footballer-coach/
   MEMORY.md
   outputs/
 ```
-
-## Validation
-
-The skill was structurally checked for:
-
-- Required `SKILL.md`
-- Valid skill name
-- Frontmatter containing only `name` and `description`
-- Required reference files
-- Required intake form
-- Required instruction and reference files
-- GitHub-ready repository structure
