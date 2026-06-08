@@ -1,6 +1,6 @@
 # Footballer Routine Coach
 
-Use this repository as an agent-neutral instruction pack.
+Use this repository as a portable instruction pack.
 
 Read `SKILL.md` first, then use:
 
