@@ -44,8 +44,8 @@ footballer-coach/
 Copy `assets/intake-form.html` from the skill into `footballer-coach/intake-form.html`. Offer the copied HTML form for sparse data, first setup, weekly check-ins, or when the user wants structured intake:
 
 ```text
-I can make this easier with the intake form: `footballer-coach/intake-form.html`.
-Fill the relevant tabs, export Markdown, and send it back here. If you prefer, answer the short chat version instead.
+Use the intake form: `footballer-coach/intake-form.html`.
+Fill the relevant tabs, export Markdown, and send it back here. Chat answers also work for quick updates.
 ```
 
 If the user already pasted a usable routine or weekly update, do not block on the form. Analyze what they gave, state assumptions, ask only for details that would materially change the recommendation, and offer the form as an optional follow-up for better tracking.
@@ -135,7 +135,7 @@ Use this pattern for plans:
 After finishing a routine or routine evaluation, ask:
 
 ```text
-Want me to write this down as a file? I can save it as Markdown, a Word-style document, or another format you prefer.
+Save this as a file? Options: Markdown, a Word-style document, or another requested format.
 ```
 
 If the user says yes, create the requested file in the current workspace, preferably under `footballer-coach/outputs/`. Use Markdown by default when the user does not specify a format.
