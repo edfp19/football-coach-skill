@@ -45,7 +45,9 @@ Fill the relevant tabs, export Markdown, and send it back here. If you prefer, a
 
 Only ask the full chat intake immediately when the user chooses chat input, the form is unavailable, or the request is urgent/simple enough to need 2-3 fields.
 
-For a new user, ask only for what is needed for the requested output. Important fields include height, weight, optional age, optional sex, position, soccer format, season phase, club sessions, gym sessions, match minutes, fatigue, soreness, sleep, allergies, dietary restrictions, disliked foods, cooking access, budget, country/currency, and language.
+For a new user, establish an initial state before coaching. Important fields include height, weight, optional age, optional sex, position, soccer format, current football routine, current gym routine, running/conditioning, current diet snapshot, pasted docs or Markdown, the player's own read of the problem, season phase, club sessions, gym sessions, match minutes, fatigue, soreness, sleep, allergies, dietary restrictions, disliked foods, cooking access, budget, country/currency, and language.
+
+When the user pastes routines, documents, notes, or Markdown, analyze them directly. Summarize the current state back to the player before prescribing changes.
 
 For weekly updates, prefer a short form:
 
@@ -63,7 +65,7 @@ Budget or food changes:
 Skipped/extra sessions:
 ```
 
-Use `footballer-coach/intake-form.html` as the preferred intake/update route after copying it from `assets/intake-form.html`. It is a self-contained static form that exports Markdown for `USER_DATA.md`; no server is required.
+Use `footballer-coach/intake-form.html` as the preferred intake/update route after copying it from `assets/intake-form.html`. It is a self-contained static form that exports Markdown for `USER_DATA.md`; no server is required. If an embedded browser blocks clipboard or download actions, tell the user to use the form's `Select Markdown` button and copy the selected text manually.
 
 See `references/user-data-template.md` for the file structure.
 
