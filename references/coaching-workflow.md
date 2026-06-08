@@ -4,8 +4,16 @@
 
 1. Detect the user's language from the session. If uncertain, ask and store it.
 2. Read `USER_DATA.md` and `MEMORY.md` when present.
-3. If data is missing, ask only the minimum questions required for the requested output.
-4. Offer `assets/intake-form.html` when the user wants easier input or a weekly update form.
+3. If `USER_DATA.md` is missing or the user asks for a routine, weekly, diet, or training update, offer `assets/intake-form.html` first as the default intake path.
+4. Tell the user they can either fill the form and send the exported Markdown back, or answer a short chat version instead.
+5. Ask inline questions immediately only when the user chooses chat input, the form is unavailable, or the request only needs 2-3 missing fields.
+
+Use this wording when offering the form:
+
+```text
+I can make this easier with the intake form: `assets/intake-form.html`.
+Fill the relevant tabs, export Markdown, and send it back here. If you prefer, answer the short chat version instead.
+```
 
 ## Output Selection
 
