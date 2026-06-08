@@ -3,15 +3,18 @@
 ## Intake
 
 1. Detect the user's language from the session. If uncertain, ask and store it.
-2. Read `USER_DATA.md` and `MEMORY.md` when present.
-3. If `USER_DATA.md` is missing or the user asks for a routine, weekly, diet, or training update, offer `assets/intake-form.html` first as the default intake path.
-4. Tell the user they can either fill the form and send the exported Markdown back, or answer a short chat version instead.
-5. Ask inline questions immediately only when the user chooses chat input, the form is unavailable, or the request only needs 2-3 missing fields.
+2. Create a user-facing `footballer-coach/` folder in the current workspace on first use.
+3. Copy the skill asset `assets/intake-form.html` to `footballer-coach/intake-form.html` when missing or stale.
+4. Create starter `footballer-coach/USER_DATA.md` and `footballer-coach/MEMORY.md` when missing. Accept legacy root-level files if they already exist, but prefer the folder for new work.
+5. If `USER_DATA.md` is missing or the user asks for a routine, weekly, diet, or training update, offer `footballer-coach/intake-form.html` first as the default intake path.
+6. Tell the user they can either fill the form and send the exported Markdown back, or answer a short chat version instead.
+7. Ask inline questions immediately only when the user chooses chat input, the form is unavailable, or the request only needs 2-3 missing fields.
+8. For a first coaching request, prioritize initial state: current football routine, current gym routine, conditioning, current diet snapshot, pasted docs/notes, and the player's own read of the problem.
 
 Use this wording when offering the form:
 
 ```text
-I can make this easier with the intake form: `assets/intake-form.html`.
+I can make this easier with the intake form: `footballer-coach/intake-form.html`.
 Fill the relevant tabs, export Markdown, and send it back here. If you prefer, answer the short chat version instead.
 ```
 
@@ -27,6 +30,19 @@ Ask the user to choose one or more outputs when unclear:
 - Recovery/injury-risk check
 
 If the user asks broadly for "advice", recommend starting with diet guidance plus recovery check.
+
+## Initial Analysis
+
+Before changing a routine, summarize the current state back to the player:
+
+- Football load.
+- Gym load.
+- Running or conditioning load.
+- Diet/recovery constraints.
+- Main conflict or risk.
+- Missing data that would change the plan.
+
+Then present options with pros and cons before recommending the first adjustment.
 
 ## Adaptation Logic
 
