@@ -3,13 +3,14 @@
 ## Intake
 
 1. Detect the user's language from the session. If uncertain, ask and store it.
-2. Create a user-facing `footballer-coach/` folder in the current workspace on first use.
-3. Copy the skill asset `assets/intake-form.html` to `footballer-coach/intake-form.html` when missing or stale.
-4. Create starter `footballer-coach/USER_DATA.md` and `footballer-coach/MEMORY.md` when missing. Accept legacy root-level files if they already exist, but prefer the folder for new work.
-5. If `USER_DATA.md` is missing or the user asks for a routine, weekly, diet, or training update, offer `footballer-coach/intake-form.html` first as the default intake path.
-6. Tell the user they can either fill the form and send the exported Markdown back, or answer a short chat version instead.
-7. Ask inline questions immediately only when the user chooses chat input, the form is unavailable, or the request only needs 2-3 missing fields.
-8. For a first coaching request, prioritize initial state: current football routine, current gym routine, conditioning, current diet snapshot, pasted docs/notes, and the player's own read of the problem.
+2. Before coaching, read `footballer-coach/USER_DATA.md` and `footballer-coach/MEMORY.md` if present.
+3. Create a user-facing `footballer-coach/` folder in the current workspace on first use.
+4. Copy the skill asset `assets/intake-form.html` to `footballer-coach/intake-form.html` when missing or stale.
+5. Create starter `footballer-coach/USER_DATA.md` and `footballer-coach/MEMORY.md` when missing. Accept legacy root-level files if they already exist, but prefer the folder for new work.
+6. If `USER_DATA.md` is missing or the user asks for a routine, weekly, diet, or training update, offer `footballer-coach/intake-form.html` first as the default intake path.
+7. Tell the user they can either fill the form and send the exported Markdown back, or answer a short chat version instead.
+8. Ask inline questions immediately only when the user chooses chat input, the form is unavailable, or the request only needs 2-3 missing fields.
+9. For a first coaching request, prioritize initial state: current football routine, current gym routine, conditioning, current diet snapshot, pasted docs/notes, and the player's own read of the problem.
 
 Use this wording when offering the form:
 
@@ -60,6 +61,18 @@ Use this structure:
 5. What to change now.
 6. What to monitor next week.
 7. Optional nutrition support tied to the routine.
+
+## Finish And Save
+
+After finishing a routine evaluation or new routine, ask:
+
+```text
+Want me to write this down as a file? I can save it as Markdown, a Word-style document, or another format you prefer.
+```
+
+If the user says yes, save the file under `footballer-coach/outputs/`. Use Markdown by default when the user does not specify a format.
+
+After every substantive coaching turn, update `footballer-coach/USER_DATA.md` and `footballer-coach/MEMORY.md` with any new stable data, weekly load, preferences, constraints, and useful user-specific learnings.
 
 ## Adaptation Logic
 
