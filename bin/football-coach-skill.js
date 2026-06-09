@@ -13,8 +13,10 @@ const PAYLOAD = [
   "CLAUDE.md",
   "AGENTS.md",
   "LICENSE",
+  "package.json",
   "agents",
   "assets",
+  "bin",
   "references"
 ];
 
@@ -164,7 +166,7 @@ function installOpenCode(options) {
   copySkillPack(dest, options);
   appendAgentsSection(projectRoot, packRoot, options);
   console.log(`Installed OpenCode instruction pack: ${dest}`);
-  console.log("Updated project AGENTS.md");
+  console.log(`Updated project AGENTS.md`);
 }
 
 function installLocal(args, options) {
