@@ -162,50 +162,13 @@ These keep `SKILL.md` readable while still giving the workflow enough structure 
 
 ## Installation
 
-### npx
-
-Install directly from GitHub:
-
-```bash
-npx github:edfp19/football-coach-skill install claude
-```
-
-Show installer help:
-
-```bash
-npx github:edfp19/football-coach-skill help
-```
-
-Targets:
-
-```bash
-npx github:edfp19/football-coach-skill install claude
-npx github:edfp19/football-coach-skill install claude-project
-npx github:edfp19/football-coach-skill install opencode
-npx github:edfp19/football-coach-skill install local
-```
-
-- `claude` installs a personal Claude skill under `~/.claude/skills/footballer-nutrition-coach`.
-- `claude-project` installs a project skill under `.claude/skills/footballer-nutrition-coach`.
-- `opencode` installs the pack under `.footballer-routine-coach/` and adds a marked section to `AGENTS.md`.
-- `local` copies the instruction pack into `./footballer-nutrition-coach` by default, or into the directory passed after `local`.
-
-Use `--dry-run` to preview and `--force` to overwrite existing files:
-
-```bash
-npx github:edfp19/football-coach-skill install claude --dry-run
-npx github:edfp19/football-coach-skill install claude --force
-```
-
-### Clone
-
 Clone or download the repository wherever the target agent or workflow reads instruction packs. If the tool expects a skill folder name, use `footballer-nutrition-coach`.
 
 ```bash
 git clone https://github.com/edfp19/football-coach-skill.git footballer-nutrition-coach
 ```
 
-### Manual Install
+Manual install:
 
 Download the repo as a ZIP, extract it, rename the extracted folder to:
 
